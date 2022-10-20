@@ -6,19 +6,19 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 
-class MainActivity : AppCompatActivity() {
+class StartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_start)
 
-        val button = findViewById<AppCompatButton>(R.id.button)
+        val button = findViewById<AppCompatButton>(R.id.button_start)
         button.setOnClickListener {
-            startActivity(Intent(this, Activity2::class.java))
+            startActivity(Intent(this, Step2Activity::class.java))
         }
 
-        val textLogin = findViewById<TextView>(R.id.login)
+        val textLogin = findViewById<TextView>(R.id.login_start)
         textLogin.setOnClickListener {
-            startActivity(Intent(this, Activity21::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }

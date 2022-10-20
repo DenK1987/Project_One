@@ -6,32 +6,24 @@ import android.os.Handler
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class Activity2 : AppCompatActivity() {
+class Step2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_2)
+        setContentView(R.layout.activity_step2)
 
         var isClickSkip = false
 
-        val textSkip = findViewById<TextView>(R.id.skip)
+        val textSkip = findViewById<TextView>(R.id.skip_step2)
         textSkip.setOnClickListener {
             isClickSkip = true
-            startActivity(Intent(this, Activity3::class.java))
-
+            startActivity(Intent(this, Step3Activity::class.java))
         }
-
-
-//        Handler().postDelayed({
-//            val i = Intent(this, Activity4::class.java)
-//            startActivity(i)
-//        }, 10000)
 
         Handler().postDelayed({
             if (!isClickSkip) {
-                val i = Intent(this, Activity3::class.java)
+                val i = Intent(this, Step3Activity::class.java)
                 startActivity(i)
             }
-
         }, 10000)
     }
 }

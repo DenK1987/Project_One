@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="-178dp"
-        android:src="@drawable/bubbles3" />
+        android:src="@drawable/bg_bubbles_step3" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,15 +18,16 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/skip2"
+            android:id="@+id/skip_step3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/dp_16"
             android:layout_marginEnd="@dimen/dp_15"
+            android:background="?attr/selectableItemBackground"
             android:fontFamily="@font/public_sans_bold"
             android:text="@string/skip"
-            android:textColor="@color/color_text"
+            android:textColor="@color/text"
             android:textSize="@dimen/sp_18" />
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_marginTop="@dimen/dp_11"
             android:fontFamily="@font/red_hat_display"
             android:text="@string/spiice"
-            android:textColor="@color/color_text"
+            android:textColor="@color/text"
             android:textSize="@dimen/sp_32"
             android:textStyle="bold" />
 
@@ -43,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/sp_32"
-            android:src="@drawable/illustration2" />
+            android:src="@drawable/image_dollars_in_circles" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,7 +54,7 @@
             android:gravity="center"
             android:lineSpacingExtra="@dimen/dp_5"
             android:text="@string/make_money_while_working_on_awesome_projects"
-            android:textColor="@color/color_text"
+            android:textColor="@color/text"
             android:textSize="@dimen/sp_18" />
 
         <ImageView
@@ -61,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/sp_32"
             android:scaleType="centerCrop"
-            android:src="@drawable/diaporama2" />
+            android:src="@drawable/diaporama_step3" />
 
     </LinearLayout>
 

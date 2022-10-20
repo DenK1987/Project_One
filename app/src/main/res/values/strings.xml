@@ -16,4 +16,17 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="return_to_sign_up">Return to Sign-up</string>
+    <string name="text_error_on_emptiness">Обязательное поле</string>
+    <string name="message_valid">Вы успешно вошли!</string>
+    <string name="not_valid_email_format">Неправильный формат</string>
+    <string name="text_error_by_number_characters_in_name">Кол-во символов должно быть от 3 до 255</string>
+    <string name="text_error_email_input_format">Формат ввода должен быть mail@.com</string>
+    <string name="text_error_email_for_number_dogs">Формат ввода должен содержать один символ @</string>
+    <string name="text_error_email_for_presence_dot">Отсутствует точка в адресе</string>
+    <string name="text_error_email_for_presence_spaces">Адрес не должен содержать пробелов</string>
+    <string name="text_error_by_number_characters_in_password">Кол-во символов должно быть от 6 до 50</string>
+    <string name="text_error_password_one_big_letter">Должна быть одна большая буква</string>
+    <string name="text_error_password_one_small_letter">Должна быть одна маленькая буква</string>
+    <string name="text_error_password_one_digit">Должна быть одна цифра</string>
+    <string name="text_error_password_one_char">Должен быть один символ</string>
 </resources>
