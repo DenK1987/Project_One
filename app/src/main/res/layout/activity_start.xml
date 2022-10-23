@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_bubbles_start" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_237"
+            android:fontFamily="@font/red_hat_display"
+            android:text="@string/spiice"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_96"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_start"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_54"
+            android:layout_marginStart="@dimen/dp_56"
+            android:layout_marginEnd="@dimen/dp_56"
+            android:layout_marginBottom="@dimen/dp_37"
+            android:background="@drawable/bg_button"
+            android:fontFamily="@font/public_sans_bold"
+            android:text="@string/discover_the_platform"
+            android:textAllCaps="false"
+            android:textColor="@color/text_button"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:id="@+id/login_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_58"
+            android:background="?attr/selectableItemBackground"
+            android:fontFamily="@font/public_sans_bold"
+            android:text="@string/you_have_an_account_log_in"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_18" />
+
+    </LinearLayout>
+
+</FrameLayout>

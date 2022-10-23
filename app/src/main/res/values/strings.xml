@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Project1</string>
+    <string name="spiice">Spiice</string>
+    <string name="discover_the_platform">Discover the platform</string>
+    <string name="you_have_an_account_log_in">You have an account ? Log-in</string>
+    <string name="skip">Skip</string>
+    <string name="find_projects_from_companies_everywhere_in_the_word">Find projects from companies \neverywhere in the word</string>
+    <string name="make_money_while_working_on_awesome_projects">Make money while working \non awesome projects</string>
+    <string name="chat_with_others_freelancers">Chat with others freelancers  \nand develop your network</string>
+    <string name="work_hard_and_level_up">Work hard and level up!</string>
+    <string name="enjoy_your_progress">Enjoy your progress!</string>
+    <string name="log_in">Log-in</string>
+    <string name="sign_up">Sign-up</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="return_to_sign_up">Return to Sign-up</string>
+    <string name="text_error_on_emptiness">Обязательное поле</string>
+    <string name="message_valid">Вы успешно вошли!</string>
+    <string name="not_valid_email_format">Неправильный формат</string>
+    <string name="text_error_by_number_characters_in_name">Кол-во символов должно быть от 3 до 255</string>
+    <string name="text_error_by_number_characters_in_password">Кол-во символов должно быть от 6 до 50</string>
+    <string name="text_error_password_one_big_letter">Должна быть одна большая буква</string>
+    <string name="text_error_password_one_small_letter">Должна быть одна маленькая буква</string>
+    <string name="text_error_password_one_digit">Должна быть одна цифра</string>
+    <string name="text_error_password_one_char">Должен быть один символ</string>
+    <string name="text_error_email_incorrect_format">Неправильный формат адреса</string>
+</resources>
