@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import com.example.projectone.utils.addTextWatcher
+import com.example.projectone.utils.isEmailValid
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -23,6 +24,13 @@ class SignupActivity : AppCompatActivity() {
 
     private lateinit var passwordLayout: TextInputLayout
     private lateinit var passwordTextInputEditText: TextInputEditText
+
+    companion object {
+        const val MAX_LENGTH_NAME = 255
+        const val MIN_LENGTH_NAME = 3
+        const val MAX_LENGTH_PASSWORD = 50
+        const val MIN_LENGTH_PASSWORD = 6
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,44 +60,54 @@ class SignupActivity : AppCompatActivity() {
 
         val button = findViewById<AppCompatButton>(R.id.button_signup)
         button.setOnClickListener {
-            validation()
+            validFirstName()
+            validLastName()
+            validEmail()
+            validPassword()
         }
     }
 
-    private fun isNotEmpty(text: String): Boolean {
-        return text.isNotEmpty()
-    }
-
-    private fun validation() {
+    private fun validFirstName() {
         val firstName = firstNameTextInputEditText.text.toString()
-        val lastName = lastNameTextInputEditText.text.toString()
-        val email = emailTextInputEditText.text.toString()
-        val password = passwordTextInputEditText.text.toString()
 
-        if (!isNotEmpty(firstName)) {
+        if (firstName.isEmpty()) {
             firstNameLayout.error = getString(R.string.text_error_on_emptiness)
         }
-        if (!isNotEmpty(lastName)) {
+
+        if (firstName.length !in MAX_LENGTH_NAME downTo MIN_LENGTH_NAME && firstName.isNotEmpty()) {
+            firstNameLayout.error = getString(R.string.text_error_by_number_characters_in_name)
+        }
+    }
+
+    private fun validLastName() {
+        val lastName = lastNameTextInputEditText.text.toString()
+
+        if (lastName.isEmpty()) {
             lastNameLayout.error = getString(R.string.text_error_on_emptiness)
         }
-        if (!isNotEmpty(email)) {
+
+        if (lastName.length !in MAX_LENGTH_NAME downTo MIN_LENGTH_NAME && lastName.isNotEmpty()) {
+            lastNameLayout.error = getString(R.string.text_error_by_number_characters_in_name)
+        }
+    }
+
+    private fun validEmail() {
+        val email = emailTextInputEditText.text.toString()
+
+        if (email.isEmpty()) {
             emailLayout.error = getString(R.string.text_error_on_emptiness)
         }
-        if (!isNotEmpty(password)) {
-            passwordLayout.error = getString(R.string.text_error_on_emptiness)
-        }
 
-        val filterEmail = email.filter {
-            it == '@' && it == '.'
+        if (!emailTextInputEditText.isEmailValid() && email.isNotEmpty()) {
+            emailLayout.error = getString(R.string.text_error_email_incorrect_format)
         }
-        val filter2Email = email.filter {
-            it == '@'
-        }
-        val filter3Email = email.filter {
-            it == ' '
-        }
-        val filter4Email = email.filter {
-            it == '.'
+    }
+
+    private fun validPassword() {
+        val password = passwordTextInputEditText.text.toString()
+
+        if (password.isEmpty()) {
+            passwordLayout.error = getString(R.string.text_error_on_emptiness)
         }
 
         val filterUpperCasePassword = password.filter {
@@ -106,47 +124,25 @@ class SignupActivity : AppCompatActivity() {
         }
 
         when {
-            firstName.length !in 255 downTo 3 && isNotEmpty(firstName) -> {
-                firstNameLayout.error = getString(R.string.text_error_by_number_characters_in_name)
+            password.length !in MAX_LENGTH_PASSWORD downTo MIN_LENGTH_PASSWORD
+                    && password.isNotEmpty() -> {
+                passwordLayout.error =
+                    getString(R.string.text_error_by_number_characters_in_password)
                 return
             }
-            lastName.length !in 255 downTo 3 && isNotEmpty(lastName) -> {
-                lastNameLayout.error = getString(R.string.text_error_by_number_characters_in_name)
-                return
-            }
-            filterEmail.length == 2 && email.length == 2 && isNotEmpty(email) -> {
-                emailLayout.error = getString(R.string.text_error_email_input_format)
-                return
-            }
-            filter2Email.length != 1 && isNotEmpty(email) -> {
-                emailLayout.error = getString(R.string.text_error_email_for_number_dogs)
-                return
-            }
-            filter3Email.isNotEmpty() && isNotEmpty(email) -> {
-                emailLayout.error = getString(R.string.text_error_email_for_presence_spaces)
-                return
-            }
-            filter4Email.isEmpty() && isNotEmpty(email) -> {
-                emailLayout.error = getString(R.string.text_error_email_for_presence_dot)
-                return
-            }
-            password.length !in 50 downTo 6 && isNotEmpty(password) -> {
-                passwordLayout.error = getString(R.string.text_error_by_number_characters_in_password)
-                return
-            }
-            filterUpperCasePassword.isEmpty() && isNotEmpty(password) -> {
+            filterUpperCasePassword.isEmpty() && password.isNotEmpty() -> {
                 passwordLayout.error = getString(R.string.text_error_password_one_big_letter)
                 return
             }
-            filterLowerCasePassword.isEmpty() && isNotEmpty(password) -> {
+            filterLowerCasePassword.isEmpty() && password.isNotEmpty() -> {
                 passwordLayout.error = getString(R.string.text_error_password_one_small_letter)
                 return
             }
-            filterDigitPassword.isEmpty() && isNotEmpty(password) -> {
+            filterDigitPassword.isEmpty() && password.isNotEmpty() -> {
                 passwordLayout.error = getString(R.string.text_error_password_one_digit)
                 return
             }
-            filterCharPassword.isEmpty() && isNotEmpty(password) -> {
+            filterCharPassword.isEmpty() && password.isNotEmpty() -> {
                 passwordLayout.error = getString(R.string.text_error_password_one_char)
                 return
             }

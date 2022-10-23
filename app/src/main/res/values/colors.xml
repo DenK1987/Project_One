@@ -6,10 +6,11 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="color_text">#120E21</color>
+    <color name="text_button">#FFFFFFFF</color>
+    <color name="text">#120E21</color>
     <color name="color_button">#9378FF</color>
     <color name="color_field_edittext">#FBEEFF</color>
-    <color name="color_text_input_edit_text">#99879D</color>
-    <color name="color_bg_input_layout">#FBEEFF</color>
+    <color name="text_input_layout">#99879D</color>
+    <color name="bg_text_input_layout">#FBEEFF</color>
+    <color name="text_error">#ff0000</color>
 </resources>

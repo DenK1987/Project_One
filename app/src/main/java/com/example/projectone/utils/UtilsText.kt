@@ -21,3 +21,11 @@ fun TextInputEditText.addTextWatcher(layout: TextInputLayout) {
 
     })
 }
+
+fun TextInputEditText.isValid(layout: TextInputLayout, errorMessage: String) {
+    if (this.text.toString().isEmpty()) layout.error = errorMessage
+}
+
+fun TextInputEditText.isEmailValid(): Boolean {
+    return android.util.Patterns.EMAIL_ADDRESS.matcher(this.text.toString()).matches()
+}

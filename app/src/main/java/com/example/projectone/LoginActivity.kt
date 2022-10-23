@@ -6,7 +6,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import com.example.projectone.SignupActivity.Companion.MAX_LENGTH_NAME
 import com.example.projectone.utils.addTextWatcher
+import com.example.projectone.utils.isValid
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -30,18 +32,13 @@ class LoginActivity : AppCompatActivity() {
 
         val button = findViewById<AppCompatButton>(R.id.button_login)
         button.setOnClickListener {
-            if (isValidEmailOrPassword(emailTextInputEditText.text.toString())) {
 
-            } else {
-                emailLayout.error = getString(R.string.text_error_on_emptiness)
-            }
-            if (isValidEmailOrPassword(passwordTextInputEditText.text.toString())) {
+            emailTextInputEditText.isValid(emailLayout, getString(R.string.text_error_on_emptiness))
+            passwordTextInputEditText.isValid(passwordLayout, getString(R.string.text_error_on_emptiness))
 
-            } else {
-                passwordLayout.error = getString(R.string.text_error_on_emptiness)
-            }
-            if (isValidEmailOrPassword(emailTextInputEditText.text.toString()) &&
-                isValidEmailOrPassword(passwordTextInputEditText.text.toString())) {
+            if (emailTextInputEditText.text.toString().isNotEmpty() &&
+                passwordTextInputEditText.text.toString().isNotEmpty()
+            ) {
                 Toast.makeText(this, getString(R.string.message_valid), Toast.LENGTH_LONG).show()
             }
         }
@@ -49,9 +46,5 @@ class LoginActivity : AppCompatActivity() {
         emailTextInputEditText.addTextWatcher(emailLayout)
         passwordTextInputEditText.addTextWatcher(passwordLayout)
 
-    }
-
-    private fun isValidEmailOrPassword(text: String): Boolean {
-        return text.isNotEmpty()
     }
 }
