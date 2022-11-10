@@ -13,7 +13,7 @@ class Step5Activity : AppCompatActivity() {
 
         var isClickSkip = false
 
-        val textSkip = findViewById<TextView>(R.id.skip_step5)
+        val textSkip = findViewById<TextView>(R.id.skipStep5)
         textSkip.setOnClickListener {
             isClickSkip = true
             startActivity(Intent(this, Step6Activity::class.java))
