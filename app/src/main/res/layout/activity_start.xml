@@ -1,57 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    tools:context=".ui.StartActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_bubbles_start" />
+        android:src="@drawable/bg_bubbles_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginTop="@dimen/dp_218"
+        android:fontFamily="@font/red_hat_display_medium"
+        android:text="@string/spiice"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_96"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_237"
-            android:fontFamily="@font/red_hat_display"
-            android:text="@string/spiice"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp_96"
-            android:textStyle="bold" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonDiscoverPlatform"
+        style="@style/Button"
+        android:layout_marginBottom="@dimen/dp_37"
+        android:text="@string/discover_the_platform"
+        app:layout_constraintBottom_toTopOf="@+id/textLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_start"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_54"
-            android:layout_marginStart="@dimen/dp_56"
-            android:layout_marginEnd="@dimen/dp_56"
-            android:layout_marginBottom="@dimen/dp_37"
-            android:background="@drawable/bg_button"
-            android:fontFamily="@font/public_sans_bold"
-            android:text="@string/discover_the_platform"
-            android:textAllCaps="false"
-            android:textColor="@color/text_button"
-            android:textSize="@dimen/sp_18" />
+    <TextView
+        android:id="@+id/textLogin"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_98"
+        android:text="@string/you_have_an_account_log_in"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/login_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_58"
-            android:background="?attr/selectableItemBackground"
-            android:fontFamily="@font/public_sans_bold"
-            android:text="@string/you_have_an_account_log_in"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp_18" />
-
-    </LinearLayout>
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

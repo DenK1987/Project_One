@@ -26,4 +26,14 @@
     <string name="text_error_password_one_digit">Должна быть одна цифра</string>
     <string name="text_error_password_one_char">Должен быть один символ</string>
     <string name="text_error_email_incorrect_format">Неправильный формат адреса</string>
+    <string name="add_note">Add note</string>
+    <string name="title">Title</string>
+    <string name="title_calendar">Выберите дату</string>
+    <string name="title_delete_note">Удалить заметку</string>
+    <string name="share_note">Поделиться заметкой через</string>
+    <string name="message">Message</string>
+    <string name="add">Add</string>
+    <string name="add_new">Add new</string>
+    <string name="back">Back</string>
+    <string name="logout">Logout</string>
 </resources>

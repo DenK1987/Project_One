@@ -1,123 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_bubbles_login" />
-
-    <View
-        android:layout_width="@dimen/dp_343"
-        android:layout_height="@dimen/dp_263"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_70"
-        android:background="@drawable/bg_blur_view" />
+        android:src="@drawable/bg_bubbles_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_60"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/bg_blur_view"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_88"
-            android:fontFamily="@font/red_hat_display"
-            android:text="@string/log_in"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp_27"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout_email_login"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_40"
-            android:layout_marginTop="@dimen/sp_27"
-            android:layout_marginEnd="@dimen/dp_40"
-            android:hint="@string/email"
-            android:textColorHint="@color/text_input_layout"
-            app:boxBackgroundColor="@color/bg_text_input_layout"
-            app:boxCornerRadiusBottomEnd="@dimen/dp_8"
-            app:boxCornerRadiusBottomStart="@dimen/dp_8"
-            app:boxCornerRadiusTopEnd="@dimen/dp_8"
-            app:boxCornerRadiusTopStart="@dimen/dp_8"
-            app:boxStrokeWidth="@dimen/dp_0"
-            app:errorEnabled="true"
-            app:errorTextColor="@color/text_error">
+            android:layout_height="@dimen/dp_265"
+            android:gravity="center|top"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_edit_text_email_login"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_24"
+                android:fontFamily="@font/red_hat_display_medium"
+                android:text="@string/log_in"
+                android:textColor="@color/text"
+                android:textSize="@dimen/sp_27" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/public_sans_bold"
-                android:inputType="textEmailAddress"
-                android:textSize="@dimen/sp_16" />
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_24"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:hint="@string/email"
+                android:textColorHint="@color/text_input_layout"
+                app:boxBackgroundColor="@color/bg_text_input_layout"
+                app:boxCornerRadiusBottomEnd="@dimen/dp_8"
+                app:boxCornerRadiusBottomStart="@dimen/dp_8"
+                app:boxCornerRadiusTopEnd="@dimen/dp_8"
+                app:boxCornerRadiusTopStart="@dimen/dp_8"
+                app:boxStrokeWidth="@dimen/dp_0"
+                app:errorEnabled="true"
+                app:errorTextColor="@color/red">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEditTextEmailLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/public_sans"
+                    android:inputType="textEmailAddress"
+                    android:textSize="@dimen/sp_16" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout_password_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_40"
-            android:layout_marginTop="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_40"
-            android:hint="@string/password"
-            android:textColorHint="@color/text_input_layout"
-            app:boxBackgroundColor="@color/bg_text_input_layout"
-            app:boxCornerRadiusBottomEnd="@dimen/dp_8"
-            app:boxCornerRadiusBottomStart="@dimen/dp_8"
-            app:boxCornerRadiusTopEnd="@dimen/dp_8"
-            app:boxCornerRadiusTopStart="@dimen/dp_8"
-            app:boxStrokeWidth="@dimen/dp_0"
-            app:endIconMode="password_toggle"
-            app:endIconTint="@color/text_input_layout"
-            app:errorEnabled="true"
-            app:errorTextColor="@color/text_error">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_edit_text_password_login"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutPasswordLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/public_sans_bold"
-                android:inputType="textPassword"
-                android:textSize="@dimen/sp_16" />
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:hint="@string/password"
+                android:textColorHint="@color/text_input_layout"
+                app:boxBackgroundColor="@color/bg_text_input_layout"
+                app:boxCornerRadiusBottomEnd="@dimen/dp_8"
+                app:boxCornerRadiusBottomStart="@dimen/dp_8"
+                app:boxCornerRadiusTopEnd="@dimen/dp_8"
+                app:boxCornerRadiusTopStart="@dimen/dp_8"
+                app:boxStrokeWidth="@dimen/dp_0"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/text_input_layout"
+                app:errorEnabled="true"
+                app:errorTextColor="@color/red">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEditTextPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/public_sans"
+                    android:inputType="textPassword"
+                    android:textSize="@dimen/sp_16" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_login"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_54"
-            android:layout_marginStart="@dimen/dp_56"
-            android:layout_marginTop="@dimen/dp_263"
-            android:layout_marginEnd="@dimen/dp_56"
-            android:background="@drawable/bg_button"
-            android:fontFamily="@font/public_sans_bold"
-            android:text="@string/log_in"
-            android:textAllCaps="false"
-            android:textColor="@color/text_button"
-            android:textSize="@dimen/sp_18" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/signup_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_41"
-            android:background="?attr/selectableItemBackground"
-            android:fontFamily="@font/public_sans_bold"
-            android:text="@string/return_to_sign_up"
-            android:textColor="@color/text"
-            android:textSize="@dimen/sp_18" />
+        </LinearLayout>
 
     </LinearLayout>
 
-</FrameLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLogin"
+        style="@style/Button"
+        android:layout_marginBottom="@dimen/dp_41"
+        android:text="@string/log_in"
+        app:layout_constraintBottom_toTopOf="@+id/textSignup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textSignup"
+        style="@style/Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_94"
+        android:text="@string/return_to_sign_up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

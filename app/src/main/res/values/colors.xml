@@ -12,5 +12,7 @@
     <color name="color_field_edittext">#FBEEFF</color>
     <color name="text_input_layout">#99879D</color>
     <color name="bg_text_input_layout">#FBEEFF</color>
-    <color name="text_error">#ff0000</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000ff</color>
+    <color name="green">#008000</color>
 </resources>

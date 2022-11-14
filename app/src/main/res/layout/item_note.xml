@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noteItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_8"
+    android:layout_marginVertical="@dimen/dp_4"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/titleItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/red_hat_display_bold"
+            android:textColor="@color/text"
+            android:textSize="@dimen/sp_20"
+            tools:text="@string/title" />
+
+        <TextView
+            android:id="@+id/dateOfCreationItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/public_sans"
+            android:gravity="end"
+            android:textColor="@color/text_input_layout"
+            android:textSize="@dimen/sp_12_8"
+            tools:text="dd/MM/yyyy" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dp_8">
+
+        <TextView
+            android:id="@+id/messageItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_11"
+            android:layout_weight="100"
+            android:fontFamily="@font/public_sans"
+            android:maxLines="1"
+            android:textColor="@color/text_input_layout"
+            android:textSize="@dimen/sp_16"
+            tools:text="@string/message" />
+
+        <ImageView
+            android:id="@+id/shareItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_11"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:src="@drawable/ic_share"
+            tools:ignore="UseAppTint" />
+
+    </LinearLayout>
+
+</LinearLayout>

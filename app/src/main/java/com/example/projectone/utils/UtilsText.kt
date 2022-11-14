@@ -12,7 +12,7 @@ fun TextInputEditText.addTextWatcher(layout: TextInputLayout) {
         }
 
         override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            if (layout.error?.isNotEmpty() == true) layout.error = null
+            if (layout.error?.isNotBlank() == true) layout.error = null
         }
 
         override fun afterTextChanged(p0: Editable?) {
@@ -22,8 +22,13 @@ fun TextInputEditText.addTextWatcher(layout: TextInputLayout) {
     })
 }
 
-fun TextInputEditText.isValid(layout: TextInputLayout, errorMessage: String) {
-    if (this.text.toString().isEmpty()) layout.error = errorMessage
+fun TextInputEditText.isValid(layout: TextInputLayout, errorMessage: String): Boolean {
+    return if (this.text.toString().isBlank()) {
+        layout.error = errorMessage
+        false
+    } else {
+        true
+    }
 }
 
 fun TextInputEditText.isEmailValid(): Boolean {
