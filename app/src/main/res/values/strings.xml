@@ -2,7 +2,7 @@
     <string name="app_name">Project1</string>
     <string name="spiice">Spiice</string>
     <string name="discover_the_platform">Discover the platform</string>
-    <string name="you_have_an_account_log_in">You have an account ? Log-in</string>
+    <string name="you_have_an_account_log_in">You have an account ? <b>Log-in</b></string>
     <string name="skip">Skip</string>
     <string name="find_projects_from_companies_everywhere_in_the_word">Find projects from companies \neverywhere in the word</string>
     <string name="make_money_while_working_on_awesome_projects">Make money while working \non awesome projects</string>
@@ -36,4 +36,7 @@
     <string name="add_new">Add new</string>
     <string name="back">Back</string>
     <string name="logout">Logout</string>
+    <string name="negative_button_cancel">Cancel</string>
+    <string name="positive_button_delete">Delete</string>
+    <string name="note_not_scheduled">Не запланирована</string>
 </resources>

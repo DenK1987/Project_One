@@ -1,25 +1,39 @@
-package com.example.projectone
+package com.example.projectone.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.projectone.databinding.ActivitySignupBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.projectone.R
+import com.example.projectone.databinding.FragmentSignupBinding
+import com.example.projectone.ui.viewpagerfragments.PageFragment
 import com.example.projectone.utils.addTextWatcher
 import com.example.projectone.utils.validEmail
 import com.example.projectone.utils.validName
 import com.example.projectone.utils.validPassword
 
-class SignupActivity : AppCompatActivity() {
+class SignupFragment : Fragment() {
 
-    private lateinit var binding: ActivitySignupBinding
+    private lateinit var binding: FragmentSignupBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivitySignupBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentSignupBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.textLogin.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, LoginFragment())
+                .addToBackStack("")
+                .commit()
         }
 
         binding.firstNameInputEditText.addTextWatcher(binding.firstNameInputLayout)

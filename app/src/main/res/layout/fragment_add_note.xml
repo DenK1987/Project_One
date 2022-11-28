@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/public_sans"
             android:inputType="text"
+            android:maxLines="1"
             android:textSize="@dimen/sp_16" />
 
     </com.google.android.material.textfield.TextInputLayout>
