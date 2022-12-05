@@ -1,4 +1,4 @@
-package com.example.projectone.ui.fragments
+package com.example.projectone.ui.listnotes.dialogs
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -41,7 +41,7 @@ class ViewingNoteBottomSheetDialog : BottomSheetDialogFragment() {
                 DATE_FORMAT,
                 note?.dateOfCreation ?: Date(System.currentTimeMillis())
             )
-            scheduleDateNoteDialog.text = if (note?.scheduleDate == null) getString(R.string.note_not_scheduled)
+            scheduleDateNoteDialog.text = if (note?.scheduleDate == null) getString(R.string.not_scheduled)
             else transformDateInString(
                 DATE_FORMAT,
                 note.scheduleDate

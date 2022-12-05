@@ -1,4 +1,4 @@
-package com.example.projectone.ui.viewpagerfragments
+package com.example.projectone.ui.onboarding.viewpagerfragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentPageBinding
-import com.example.projectone.ui.fragments.SignupFragment
+import com.example.projectone.ui.authorization.SignupFragment
 
 private const val BACKGROUND_EXTRA = "background_extra"
 private const val IMAGE_EXTRA = "image_extra"

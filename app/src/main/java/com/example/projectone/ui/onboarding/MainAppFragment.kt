@@ -1,4 +1,4 @@
-package com.example.projectone.ui.fragments
+package com.example.projectone.ui.onboarding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentMainAppBinding
-import com.example.projectone.ui.viewpagerfragments.ViewPageFragment
+import com.example.projectone.ui.authorization.LoginFragment
+import com.example.projectone.ui.onboarding.viewpagerfragments.ViewPageFragment
 
 class MainAppFragment : Fragment() {
 

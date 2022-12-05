@@ -13,7 +13,7 @@
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_16"
         android:fontFamily="@font/red_hat_display_bold"
-        android:text="Название заметки:"
+        android:text="@string/name_note"
         android:textColor="@color/text"
         android:textSize="@dimen/sp_16" />
 
@@ -34,37 +34,13 @@
         android:layout_height="1dp"
         android:background="@color/text_input_layout" />
 
-    <!--        <CheckBox-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="match_parent"-->
-    <!--            android:buttonTint="@color/text_input_layout"-->
-    <!--            android:text="- заметка не запланирована" />-->
-    <!--    -->
-    <!--    <CheckBox-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:buttonTint="@color/text_input_layout"-->
-    <!--        android:text="@string/label_1" />-->
-    <!--    -->
-    <!--    <CheckBox-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:buttonTint="@color/text_input_layout"-->
-    <!--        android:text="@string/label_1" />-->
-    <!--    -->
-    <!--    <CheckBox-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:buttonTint="@color/text_input_layout"-->
-    <!--        android:text="@string/label_1" />-->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_8"
         android:fontFamily="@font/red_hat_display_bold"
-        android:text="Содержание заметки:"
+        android:text="@string/content_note"
         android:textColor="@color/text"
         android:textSize="@dimen/sp_16" />
 
@@ -76,7 +52,7 @@
         android:layout_marginEnd="@dimen/dp_16"
         android:fontFamily="@font/public_sans"
         android:paddingVertical="@dimen/dp_8"
-        android:textColor="@color/text"
+        android:textColor="@color/text_input_layout"
         android:textSize="@dimen/sp_16"
         tools:text="@string/message" />
 
@@ -91,7 +67,7 @@
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_8"
         android:fontFamily="@font/red_hat_display_bold"
-        android:text="Дата создания:"
+        android:text="@string/date_of_creation"
         android:textColor="@color/text"
         android:textSize="@dimen/sp_16" />
 
@@ -102,7 +78,7 @@
         android:layout_marginStart="@dimen/dp_16"
         android:fontFamily="@font/public_sans"
         android:paddingVertical="@dimen/dp_8"
-        android:textColor="@color/text"
+        android:textColor="@color/text_input_layout"
         android:textSize="@dimen/sp_16"
         tools:text="dd/MM/yyyy" />
 
@@ -117,7 +93,7 @@
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_8"
         android:fontFamily="@font/red_hat_display_bold"
-        android:text="Запланирова на:"
+        android:text="@string/scheduled_for"
         android:textColor="@color/text"
         android:textSize="@dimen/sp_16" />
 
@@ -128,7 +104,7 @@
         android:layout_marginStart="@dimen/dp_16"
         android:fontFamily="@font/public_sans"
         android:paddingVertical="@dimen/dp_8"
-        android:textColor="@color/text"
+        android:textColor="@color/text_input_layout"
         android:textSize="@dimen/sp_16"
         tools:text="dd/MM/yyyy" />
 

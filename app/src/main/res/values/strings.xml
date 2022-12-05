@@ -38,5 +38,13 @@
     <string name="logout">Logout</string>
     <string name="negative_button_cancel">Cancel</string>
     <string name="positive_button_delete">Delete</string>
-    <string name="note_not_scheduled">Не запланирована</string>
+    <string name="not_scheduled">Не запланирована</string>
+    <string name="name_note">Название заметки:</string>
+    <string name="content_note">Содержание заметки:</string>
+    <string name="date_of_creation">Дата создания:</string>
+    <string name="scheduled_for">Запланирова на:</string>
+    <string name="expired_note">- истекший срок заметки</string>
+    <string name="scheduled_for_current_date">- запланирована на текущую дату</string>
+    <string name="scheduled_for_future_date">- запланирована на будущую дату</string>
+    <string name="note_not_scheduled">- заметка не запланирована</string>
 </resources>

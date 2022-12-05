@@ -1,4 +1,4 @@
-package com.example.projectone.ui.fragments
+package com.example.projectone.ui.authorization
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentSignupBinding
-import com.example.projectone.ui.viewpagerfragments.PageFragment
+import com.example.projectone.ui.authorization.LoginFragment
 import com.example.projectone.utils.addTextWatcher
 import com.example.projectone.utils.validEmail
 import com.example.projectone.utils.validName

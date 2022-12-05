@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.projectone.R
 import com.example.projectone.databinding.ActivityStartBinding
-import com.example.projectone.ui.fragments.MainAppFragment
+import com.example.projectone.ui.onboarding.MainAppFragment
 
 class StartActivity : AppCompatActivity() {
 

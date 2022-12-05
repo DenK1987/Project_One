@@ -1,30 +1,45 @@
-package com.example.projectone
+package com.example.projectone.ui.addnote
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.projectone.databinding.ActivityAddNoteBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.projectone.R
+import com.example.projectone.databinding.FragmentAddNoteBinding
 import com.example.projectone.model.Note
-import com.example.projectone.repositories.NotesRepository
+import com.example.projectone.ui.listnotes.ListNotesViewModel
+import com.example.projectone.ui.listnotes.ListOfNotesFragment
 import com.example.projectone.utils.addTextWatcher
 import com.example.projectone.utils.isValid
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.util.*
 
-class AddNoteActivity : AppCompatActivity() {
+class AddNoteFragment : Fragment() {
 
-    private lateinit var binding: ActivityAddNoteBinding
+    private lateinit var binding: FragmentAddNoteBinding
 
-    private val repository = NotesRepository()
+    private val viewModel: ListNotesViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityAddNoteBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentAddNoteBinding.inflate(inflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         with(binding.toolbarCustom) {
             toolbarBack.setOnClickListener {
-                startActivity(Intent(this@AddNoteActivity, ListOfNotesActivity::class.java))
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, ListOfNotesFragment())
+                    .addToBackStack("")
+                    .commit()
             }
         }
 
@@ -36,6 +51,7 @@ class AddNoteActivity : AppCompatActivity() {
         binding.buttonAddNote.setOnClickListener {
             addNoteAndNavigate()
         }
+
     }
 
     private fun showDatePicker() {
@@ -54,17 +70,20 @@ class AddNoteActivity : AppCompatActivity() {
                     .setSelection(Calendar.getInstance().timeInMillis)
                     .build()
             datePicker.addOnPositiveButtonClickListener {
-                repository.addNote(
+                viewModel.addNote(
                     note = Note(
                         title = binding.titleNoteInputEditText.text.toString(),
                         message = binding.messageNoteInputEditText.text.toString(),
                         scheduleDate = Date(it),
-                        dateOfCreation = Date(it)
+                        dateOfCreation = Date(System.currentTimeMillis())
                     )
                 )
-                startActivity(Intent(this, ListOfNotesActivity::class.java))
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.container, ListOfNotesFragment())
+                    .addToBackStack("")
+                    .commit()
             }
-            datePicker.show(supportFragmentManager, "note")
+            datePicker.show(parentFragmentManager, "note")
         }
     }
 
@@ -78,13 +97,16 @@ class AddNoteActivity : AppCompatActivity() {
                 getString(R.string.text_error_on_emptiness)
             )
         ) {
-            repository.addNote(
+            viewModel.addNote(
                 Note(
                     binding.titleNoteInputEditText.text.toString(),
                     binding.messageNoteInputEditText.text.toString()
                 )
             )
-            startActivity(Intent(this, ListOfNotesActivity::class.java))
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.container, ListOfNotesFragment())
+                .addToBackStack("")
+                .commit()
         }
     }
 }

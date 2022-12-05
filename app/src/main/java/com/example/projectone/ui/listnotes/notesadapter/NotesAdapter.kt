@@ -1,4 +1,4 @@
-package com.example.projectone.ui.notesadapter
+package com.example.projectone.ui.listnotes.notesadapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,7 +8,8 @@ import com.example.projectone.databinding.ItemNoteBinding
 import com.example.projectone.model.Note
 
 class NotesAdapter(
-    private val onClickNote: (Note) -> Unit
+    private val onClickNote: (Note) -> Unit,
+    private val onClickInfo: (Note) -> Unit
 ) :
     RecyclerView.Adapter<NotesViewHolder>() {
     private var notes = listOf<Note>()
@@ -19,7 +20,8 @@ class NotesAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), onClickNote = onClickNote
+            ), onClickNote = onClickNote,
+            onClickInfo = onClickInfo
         )
     }
 

@@ -1,4 +1,4 @@
-package com.example.projectone.ui.viewpagerfragments
+package com.example.projectone.ui.onboarding.viewpagerfragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

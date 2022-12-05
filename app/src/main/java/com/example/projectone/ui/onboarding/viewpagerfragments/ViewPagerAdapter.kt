@@ -1,10 +1,10 @@
-package com.example.projectone.ui.viewpagerfragments
+package com.example.projectone.ui.onboarding.viewpagerfragments
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.projectone.R
-import com.example.projectone.ui.viewpagerfragments.PageFragment.Companion.getPagerFragmentInstance
+import com.example.projectone.ui.onboarding.viewpagerfragments.PageFragment.Companion.getPagerFragmentInstance
 
 class ViewPagerAdapter(fragmentManager: FragmentManager) :
     FragmentStatePagerAdapter(fragmentManager) {
