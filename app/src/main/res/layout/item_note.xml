@@ -20,6 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:maxLength="27"
             android:fontFamily="@font/red_hat_display_bold"
             android:textColor="@color/text"
             android:textSize="@dimen/sp_20"
@@ -49,22 +52,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_11"
-            android:layout_weight="100"
             android:fontFamily="@font/public_sans"
             android:maxLines="1"
             android:textColor="@color/text_input_layout"
             android:textSize="@dimen/sp_16"
             tools:text="@string/message" />
 
-        <ImageView
-            android:id="@+id/shareItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_11"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:src="@drawable/ic_share"
-            tools:ignore="UseAppTint" />
+<!--        <ImageView-->
+<!--            android:id="@+id/shareItem"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/dp_11"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="end"-->
+<!--            android:src="@drawable/ic_share"-->
+<!--            tools:ignore="UseAppTint" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/infoItem"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/dp_11"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="end"-->
+<!--            android:src="@drawable/ic_baseline_info_24"-->
+<!--            tools:ignore="UseAppTint" />-->
 
     </LinearLayout>
 

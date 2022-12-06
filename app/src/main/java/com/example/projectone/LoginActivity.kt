@@ -9,6 +9,7 @@ import com.example.projectone.utils.addTextWatcher
 import com.example.projectone.utils.isValid
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,24 +21,21 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, SignupActivity::class.java))
         }
 
-        val emailLayout = binding.inputLayoutEmailLogin
-        val emailTextInputEditText = binding.inputEditTextEmailLogin
-
-        val passwordLayout = binding.inputLayoutPasswordLogin
-        val passwordTextInputEditText = binding.inputEditTextPasswordLogin
-
-        emailTextInputEditText.addTextWatcher(emailLayout)
-        passwordTextInputEditText.addTextWatcher(passwordLayout)
+        binding.emailLoginInputEditText.addTextWatcher(binding.emailLoginInputLayout)
+        binding.passwordLoginInputEditText.addTextWatcher(binding.passwordLoginInputLayout)
 
         binding.buttonLogin.setOnClickListener {
-            emailTextInputEditText.isValid(emailLayout, getString(R.string.text_error_on_emptiness))
-            passwordTextInputEditText.isValid(
-                passwordLayout,
+            binding.emailLoginInputEditText.isValid(
+                binding.emailLoginInputLayout,
+                getString(R.string.text_error_on_emptiness)
+            )
+            binding.passwordLoginInputEditText.isValid(
+                binding.passwordLoginInputLayout,
                 getString(R.string.text_error_on_emptiness)
             )
 
-            if (emailTextInputEditText.text.toString().isNotEmpty() &&
-                passwordTextInputEditText.text.toString().isNotEmpty()
+            if (binding.emailLoginInputEditText.text.toString().isNotBlank() &&
+                binding.passwordLoginInputEditText.text.toString().isNotBlank()
             ) {
                 Toast.makeText(this, getString(R.string.message_valid), Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, AddNoteActivity::class.java))

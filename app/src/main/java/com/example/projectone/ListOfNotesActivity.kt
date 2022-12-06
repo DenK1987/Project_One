@@ -2,26 +2,25 @@ package com.example.projectone
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectone.databinding.ActivityListOfNotesBinding
 import com.example.projectone.model.Note
 import com.example.projectone.repositories.NotesRepository
+import com.example.projectone.ui.fragments.ViewingNoteBottomSheetDialog
 import com.example.projectone.ui.notesadapter.NotesAdapter
-import com.example.projectone.utils.transformDateInString
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.util.*
 
 private const val SHARE_CONTENT_TYPE = "text/plain"
 
 class ListOfNotesActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityListOfNotesBinding
 
     private val repository = NotesRepository()
 
-    private val notesAdapter = NotesAdapter(::shareNote, ::deleteNote)
+    private val notesAdapter = NotesAdapter(::onClickNote)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +46,10 @@ class ListOfNotesActivity : AppCompatActivity() {
         }
     }
 
+    private fun onClickNote(note: Note) {
+        ViewingNoteBottomSheetDialog()
+    }
+
     private fun shareNote(note: Note) {
         Intent(Intent.ACTION_SEND)
             .apply {
@@ -65,8 +68,8 @@ class ListOfNotesActivity : AppCompatActivity() {
         MaterialAlertDialogBuilder(this)
             .setTitle(note.title)
             .setMessage(note.message)
-            .setNegativeButton("Cancel") { _, _ -> }
-            .setPositiveButton("Delete") { _, _ ->
+            .setNegativeButton(getString(R.string.negative_button_cancel)) { _, _ -> }
+            .setPositiveButton(getString(R.string.positive_button_delete)) { _, _ ->
                 repository.deleteNote(note)
                 notesAdapter.apply {
                     setList(repository.getListNotes())

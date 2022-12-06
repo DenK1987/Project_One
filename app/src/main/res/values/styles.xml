@@ -16,7 +16,8 @@
         <item name="android:textColor">@color/text</item>
         <item name="android:gravity">center</item>
         <item name="android:lineSpacingExtra">@dimen/dp_5</item>
-        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:stateListAnimator">@drawable/animation_text</item>
+<!--        <item name="android:background">?attr/selectableItemBackground</item>-->
         <item name="android:fontFamily">@font/public_sans</item>
     </style>
 

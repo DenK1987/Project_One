@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/noteViewingDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:fontFamily="@font/red_hat_display_bold"
+        android:text="Название заметки:"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/titleNoteDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:fontFamily="@font/public_sans"
+        android:paddingVertical="8dp"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16"
+        tools:text="@string/title" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/text_input_layout" />
+
+    <!--        <CheckBox-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:buttonTint="@color/text_input_layout"-->
+    <!--            android:text="- заметка не запланирована" />-->
+    <!--    -->
+    <!--    <CheckBox-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:buttonTint="@color/text_input_layout"-->
+    <!--        android:text="@string/label_1" />-->
+    <!--    -->
+    <!--    <CheckBox-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:buttonTint="@color/text_input_layout"-->
+    <!--        android:text="@string/label_1" />-->
+    <!--    -->
+    <!--    <CheckBox-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:buttonTint="@color/text_input_layout"-->
+    <!--        android:text="@string/label_1" />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:fontFamily="@font/red_hat_display_bold"
+        android:text="Содержание заметки:"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/messageNoteDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:fontFamily="@font/public_sans"
+        android:paddingVertical="@dimen/dp_8"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16"
+        tools:text="@string/message" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/text_input_layout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:fontFamily="@font/red_hat_display_bold"
+        android:text="Дата создания:"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/dateOfCreationNoteDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:fontFamily="@font/public_sans"
+        android:paddingVertical="@dimen/dp_8"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16"
+        tools:text="dd/MM/yyyy" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/text_input_layout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_8"
+        android:fontFamily="@font/red_hat_display_bold"
+        android:text="Запланирова на:"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/scheduleDateNoteDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:fontFamily="@font/public_sans"
+        android:paddingVertical="@dimen/dp_8"
+        android:textColor="@color/text"
+        android:textSize="@dimen/sp_16"
+        tools:text="dd/MM/yyyy" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/text_input_layout" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_8">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/shareNoteDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dp_30"
+                android:background="?attr/selectableItemBackground"
+                android:padding="@dimen/dp_4"
+                android:src="@drawable/ic_share"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/deleteNoteDialog"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseAppTint" />
+
+            <ImageView
+                android:id="@+id/deleteNoteDialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_30"
+                android:background="?attr/selectableItemBackground"
+                android:padding="@dimen/dp_4"
+                android:src="@drawable/ic_baseline_delete_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/shareNoteDialog"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseAppTint" />
+
+            <!--        <ImageView-->
+            <!--            android:id="@+id/editNoteDialog"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_gravity="center"-->
+            <!--            android:layout_weight="1"-->
+            <!--            android:src="@drawable/ic_baseline_edit_24"-->
+            <!--            tools:ignore="UseAppTint" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

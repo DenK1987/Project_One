@@ -8,8 +8,7 @@ import com.example.projectone.databinding.ItemNoteBinding
 import com.example.projectone.model.Note
 
 class NotesAdapter(
-    private val actionShares: (Note) -> Unit,
-    private val deleteNote: (Note) -> Unit
+    private val onClickNote: (Note) -> Unit
 ) :
     RecyclerView.Adapter<NotesViewHolder>() {
     private var notes = listOf<Note>()
@@ -20,8 +19,7 @@ class NotesAdapter(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            ), actionShare = actionShares,
-            deleteNote = deleteNote
+            ), onClickNote = onClickNote
         )
     }
 
