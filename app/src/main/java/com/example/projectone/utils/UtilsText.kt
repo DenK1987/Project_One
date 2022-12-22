@@ -3,8 +3,10 @@ package com.example.projectone.utils
 import android.text.Editable
 import android.text.TextWatcher
 import com.example.projectone.R
+import com.example.projectone.utils.Constant.MAX_LENGTH_MESSAGE
 import com.example.projectone.utils.Constant.MAX_LENGTH_NAME
 import com.example.projectone.utils.Constant.MAX_LENGTH_PASSWORD
+import com.example.projectone.utils.Constant.MAX_LENGTH_TITLE
 import com.example.projectone.utils.Constant.MIN_LENGTH_NAME
 import com.example.projectone.utils.Constant.MIN_LENGTH_PASSWORD
 import com.google.android.material.textfield.TextInputEditText
@@ -17,6 +19,8 @@ object Constant {
     const val MIN_LENGTH_NAME = 3
     const val MAX_LENGTH_PASSWORD = 50
     const val MIN_LENGTH_PASSWORD = 6
+    const val MAX_LENGTH_TITLE = 50
+    const val MAX_LENGTH_MESSAGE = 140
 }
 
 fun TextInputEditText.addTextWatcher(layout: TextInputLayout) {
@@ -55,6 +59,12 @@ fun TextInputEditText.validName(nameLayout: TextInputLayout) {
     }
 }
 
+fun TextInputEditText.isValidName(): Boolean {
+    val firstName = this.text.toString()
+
+    return !(firstName.length !in MAX_LENGTH_NAME downTo MIN_LENGTH_NAME && firstName.isBlank())
+}
+
 fun TextInputEditText.validEmail(emailLayout: TextInputLayout) {
     val email = this.text.toString()
 
@@ -67,6 +77,13 @@ fun TextInputEditText.validEmail(emailLayout: TextInputLayout) {
     ) {
         emailLayout.error = this.context.getString(R.string.text_error_email_incorrect_format)
     }
+}
+
+fun TextInputEditText.isValidEmail(): Boolean {
+    val email = this.text.toString()
+
+    return android.util.Patterns.EMAIL_ADDRESS.matcher(this.text.toString())
+        .matches() && email.isNotBlank()
 }
 
 fun TextInputEditText.validPassword(passwordLayout: TextInputLayout) {
@@ -117,5 +134,65 @@ fun TextInputEditText.validPassword(passwordLayout: TextInputLayout) {
             passwordLayout.error = this.context.getString(R.string.text_error_password_one_char)
             return
         }
+    }
+}
+
+fun TextInputEditText.isValidPassword(): Boolean {
+    val password = this.text.toString()
+
+    val filterUpperCasePassword = password.filter {
+        it.isUpperCase()
+    }
+
+    val filterLowerCasePassword = password.filter {
+        it.isLowerCase()
+    }
+
+    val filterDigitPassword = password.filter {
+        it.isDigit()
+    }
+
+    val filterCharPassword = password.filter {
+        it.isLetter().not() && it.isDigit().not()
+    }
+
+    return when {
+        password.length !in MAX_LENGTH_PASSWORD downTo MIN_LENGTH_PASSWORD
+                && password.isBlank() -> {
+            false
+        }
+        filterUpperCasePassword.isBlank() && password.isBlank() -> {
+            false
+        }
+        filterLowerCasePassword.isBlank() && password.isBlank() -> {
+
+            false
+        }
+        filterDigitPassword.isBlank() && password.isBlank() -> {
+            false
+        }
+        filterCharPassword.isBlank() && password.isBlank() -> {
+            false
+        }
+        else -> {
+            true
+        }
+    }
+}
+
+fun TextInputEditText.validateForMaxLengthOf50Characters(nameLayout: TextInputLayout) {
+    val editText = this.text.toString()
+
+    if (editText.length > MAX_LENGTH_TITLE) {
+        nameLayout.error = this.context.getString(R.string.text_error_with_maximum_of_50_characters)
+    }
+}
+
+fun TextInputEditText.validateForMaxLengthOf140Characters(nameLayout: TextInputLayout) {
+    val editText = this.text.toString()
+
+    if (editText.length > MAX_LENGTH_MESSAGE) {
+        nameLayout.error =
+            this.context.getString(R.string.text_error_with_maximum_of_140_characters)
     }
 }

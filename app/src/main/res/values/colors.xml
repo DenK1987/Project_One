@@ -6,7 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="text_button">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="text">#120E21</color>
     <color name="color_button">#9378FF</color>
     <color name="color_field_edittext">#FBEEFF</color>
@@ -15,4 +15,8 @@
     <color name="red">#FF0000</color>
     <color name="blue">#0000ff</color>
     <color name="green">#008000</color>
+    <color name="color_button_translucent">#669378FF</color>
+    <color name="bg_notes_profile">#E5E5E5</color>
+    <color name="color_button_profile">#FBEAFF</color>
+    <color name="color_button_transparent">#00FFFFFF</color>
 </resources>
