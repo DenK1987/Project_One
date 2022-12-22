@@ -5,37 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.projectone.R
-import com.example.projectone.databinding.FragmentMainAppBinding
-import com.example.projectone.ui.authorization.LoginFragment
+import com.example.projectone.databinding.FragmentStartAppBinding
+import com.example.projectone.ui.auth.LoginFragment
 import com.example.projectone.ui.onboarding.viewpagerfragments.ViewPageFragment
+import com.example.projectone.utils.navigationFragments
 
-class MainAppFragment : Fragment() {
+class StartAppFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainAppBinding
+    private lateinit var binding: FragmentStartAppBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentMainAppBinding.inflate(inflater)
+        binding = FragmentStartAppBinding.inflate(inflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.buttonDiscoverPlatform.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, ViewPageFragment())
-                .addToBackStack("")
-                .commit()
+            navigationFragments(parentFragmentManager, ViewPageFragment())
         }
+
         binding.textLogin.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, LoginFragment())
-                .addToBackStack("")
-                .commit()
+            navigationFragments(parentFragmentManager, LoginFragment())
         }
     }
 }

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import com.example.projectone.databinding.DialogInfoNoteBinding
-import com.example.projectone.model.Note
+import com.example.projectone.models.Note
 
 class NotePlanningInfoDialog : DialogFragment() {
 

@@ -3,7 +3,7 @@ package com.example.projectone.utils
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import com.example.projectone.R
-import com.example.projectone.model.Note
+import com.example.projectone.models.Note
 
 private const val SHARE_CONTENT_TYPE = "text/plain"
 

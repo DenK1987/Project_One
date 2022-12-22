@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectone.databinding.ItemNoteBinding
-import com.example.projectone.model.Note
+import com.example.projectone.models.Note
 
-class NotesAdapter(
+class NoteAdapter(
     private val onClickNote: (Note) -> Unit,
     private val onClickInfo: (Note) -> Unit
 ) :

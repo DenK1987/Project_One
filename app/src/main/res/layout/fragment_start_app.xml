@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.StartActivity">
+    tools:context=".ui.MainActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -17,13 +17,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/TextAppBig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_218"
-        android:fontFamily="@font/red_hat_display_medium"
         android:text="@string/spiice"
-        android:textColor="@color/text"
-        android:textSize="@dimen/sp_96"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

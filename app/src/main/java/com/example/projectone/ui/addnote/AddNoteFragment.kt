@@ -8,11 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentAddNoteBinding
-import com.example.projectone.model.Note
+import com.example.projectone.models.Note
+import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.ui.listnotes.ListNotesViewModel
 import com.example.projectone.ui.listnotes.ListOfNotesFragment
-import com.example.projectone.utils.addTextWatcher
-import com.example.projectone.utils.isValid
+import com.example.projectone.utils.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.util.*
 
@@ -20,7 +21,7 @@ class AddNoteFragment : Fragment() {
 
     private lateinit var binding: FragmentAddNoteBinding
 
-    private val viewModel: ListNotesViewModel by viewModels()
+    private val viewModel: AddNoteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,15 +35,6 @@ class AddNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding.toolbarCustom) {
-            toolbarBack.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, ListOfNotesFragment())
-                    .addToBackStack("")
-                    .commit()
-            }
-        }
-
         binding.titleNoteInputEditText.addTextWatcher(binding.titleNoteInputLayout)
         binding.messageNoteInputEditText.addTextWatcher(binding.messageNoteInputLayout)
 
@@ -51,18 +43,30 @@ class AddNoteFragment : Fragment() {
         binding.buttonAddNote.setOnClickListener {
             addNoteAndNavigate()
         }
-
     }
 
     private fun showDatePicker() {
-        if (binding.titleNoteInputEditText.isValid(
-                binding.titleNoteInputLayout,
-                getString(R.string.text_error_on_emptiness)
-            ) ||
-            binding.messageNoteInputEditText.isValid(
-                binding.messageNoteInputLayout,
-                getString(R.string.text_error_on_emptiness)
-            )
+        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+        val textTitle = binding.titleNoteInputEditText.text.toString()
+        val textMessage = binding.messageNoteInputEditText.text.toString()
+        val userEmail = sharedPreferencesRepository.getUserEmail().toString()
+
+        binding.titleNoteInputEditText.isValid(
+            binding.titleNoteInputLayout,
+            getString(R.string.text_error_on_emptiness)
+        )
+        binding.messageNoteInputEditText.isValid(
+            binding.messageNoteInputLayout,
+            getString(R.string.text_error_on_emptiness)
+        )
+
+        binding.titleNoteInputEditText.validateForMaxLengthOf50Characters(binding.titleNoteInputLayout)
+        binding.messageNoteInputEditText.validateForMaxLengthOf140Characters(binding.messageNoteInputLayout)
+
+        if (textTitle.isNotBlank()
+            && textTitle.length <= Constant.MAX_LENGTH_TITLE
+            && textMessage.isNotBlank()
+            && textMessage.length <= Constant.MAX_LENGTH_MESSAGE
         ) {
             val datePicker =
                 MaterialDatePicker.Builder.datePicker()
@@ -72,41 +76,62 @@ class AddNoteFragment : Fragment() {
             datePicker.addOnPositiveButtonClickListener {
                 viewModel.addNote(
                     note = Note(
-                        title = binding.titleNoteInputEditText.text.toString(),
-                        message = binding.messageNoteInputEditText.text.toString(),
-                        scheduleDate = Date(it),
-                        dateOfCreation = Date(System.currentTimeMillis())
+                        title = textTitle,
+                        message = textMessage,
+                        scheduleDate = it,
+                        dateOfCreation = System.currentTimeMillis(),
+                        userEmail = userEmail
                     )
                 )
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, ListOfNotesFragment())
-                    .addToBackStack("")
-                    .commit()
+
+                requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+                    .menu.findItem(R.id.listNotes)
+                    .isChecked = true
+
+                navigationFragments(parentFragmentManager, ListOfNotesFragment())
             }
             datePicker.show(parentFragmentManager, "note")
         }
     }
 
     private fun addNoteAndNavigate() {
-        if (binding.titleNoteInputEditText.isValid(
-                binding.titleNoteInputLayout,
-                getString(R.string.text_error_on_emptiness)
-            ) ||
-            binding.messageNoteInputEditText.isValid(
-                binding.messageNoteInputLayout,
-                getString(R.string.text_error_on_emptiness)
-            )
+        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+        val textTitle = binding.titleNoteInputEditText.text.toString()
+        val textMessage = binding.messageNoteInputEditText.text.toString()
+        val userEmail = sharedPreferencesRepository.getUserEmail().toString()
+
+        binding.titleNoteInputEditText.isValid(
+            binding.titleNoteInputLayout,
+            getString(R.string.text_error_on_emptiness)
+        )
+        binding.messageNoteInputEditText.isValid(
+            binding.messageNoteInputLayout,
+            getString(R.string.text_error_on_emptiness)
+        )
+
+        binding.titleNoteInputEditText.validateForMaxLengthOf50Characters(binding.titleNoteInputLayout)
+        binding.messageNoteInputEditText.validateForMaxLengthOf140Characters(binding.messageNoteInputLayout)
+
+        if (textTitle.isNotBlank()
+            && textTitle.length <= Constant.MAX_LENGTH_TITLE
+            && textMessage.isNotBlank()
+            && textMessage.length <= Constant.MAX_LENGTH_MESSAGE
         ) {
             viewModel.addNote(
                 Note(
-                    binding.titleNoteInputEditText.text.toString(),
-                    binding.messageNoteInputEditText.text.toString()
+                    title = textTitle,
+                    message = textMessage,
+                    dateOfCreation = System.currentTimeMillis(),
+                    scheduleDate = null,
+                    userEmail = userEmail
                 )
             )
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.container, ListOfNotesFragment())
-                .addToBackStack("")
-                .commit()
+
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+                .menu.findItem(R.id.listNotes)
+                .isChecked = true
+
+            navigationFragments(parentFragmentManager, ListOfNotesFragment())
         }
     }
 }

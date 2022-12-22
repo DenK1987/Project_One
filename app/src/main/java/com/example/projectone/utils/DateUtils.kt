@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @SuppressLint("SimpleDateFormat")
-fun transformDateInString(dateFormat: String, date: Date): String {
+fun transformDateLongInString(dateFormat: String, date: Long): String {
     try {
         val _dateFormat: DateFormat = SimpleDateFormat(dateFormat)
-        return _dateFormat.format(date)
+        return _dateFormat.format(Date(date))
     } catch (exception: Exception) {
     }
     return ""

@@ -8,7 +8,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentPageBinding
-import com.example.projectone.ui.authorization.SignupFragment
+import com.example.projectone.ui.auth.SignupFragment
+import com.example.projectone.utils.navigationFragments
 
 private const val BACKGROUND_EXTRA = "background_extra"
 private const val IMAGE_EXTRA = "image_extra"
@@ -29,15 +30,14 @@ class PageFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.apply {
             arguments?.getInt(BACKGROUND_EXTRA)?.let { backgroundPage.setImageResource(it) }
             arguments?.getInt(IMAGE_EXTRA)?.let { imagePage.setImageResource(it) }
             arguments?.getInt(TEXT_EXTRA)?.let { textPage.setText(it) }
+
             skipStep.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, SignupFragment())
-                    .addToBackStack("")
-                    .commit()
+                navigationFragments(parentFragmentManager,  SignupFragment())
             }
         }
     }

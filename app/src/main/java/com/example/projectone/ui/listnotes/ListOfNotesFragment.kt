@@ -9,12 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentListOfNotesBinding
-import com.example.projectone.model.Note
-import com.example.projectone.ui.addnote.AddNoteFragment
-import com.example.projectone.ui.authorization.LoginFragment
+import com.example.projectone.models.Note
+import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.ui.listnotes.dialogs.NotePlanningInfoDialog
-import com.example.projectone.ui.listnotes.notesadapter.NotesAdapter
 import com.example.projectone.ui.listnotes.dialogs.ViewingNoteBottomSheetDialog
+import com.example.projectone.ui.listnotes.notesadapter.NoteAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class ListOfNotesFragment : Fragment() {
@@ -22,6 +22,8 @@ class ListOfNotesFragment : Fragment() {
     private lateinit var binding: FragmentListOfNotesBinding
 
     private val viewModel: ListNotesViewModel by viewModels()
+
+    private var bottomNavigation: BottomNavigationView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,36 +37,24 @@ class ListOfNotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding.toolbarCustom) {
-            toolbarBack.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, LoginFragment())
-                    .addToBackStack("")
-                    .commit()
-            }
-            toolbarTitle.text = getString(R.string.logout)
-            toolbarAction.visibility = View.VISIBLE
-            toolbarAction.setOnClickListener {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, AddNoteFragment())
-                    .addToBackStack("")
-                    .commit()
-            }
-        }
+        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+
+        bottomNavigation = requireActivity().findViewById(R.id.bottomNavigation)
+        bottomNavigation?.visibility = View.VISIBLE
 
         binding.listOfNotes.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = NotesAdapter(
+            adapter = NoteAdapter(
                 onClickNote = { note -> onClickNote(note) },
                 onClickInfo = { note -> onClickInfo(note) }
             )
         }
 
         viewModel.listNotes.observe(viewLifecycleOwner) {
-            (binding.listOfNotes.adapter as NotesAdapter).setList(it)
+            (binding.listOfNotes.adapter as NoteAdapter).setList(it)
         }
 
-        viewModel.getListNotes()
+        viewModel.getListNotesByUser(sharedPreferencesRepository.getUserEmail().toString())
     }
 
     private fun onClickNote(note: Note) {
@@ -76,6 +66,8 @@ class ListOfNotesFragment : Fragment() {
     }
 
     private fun deleteNote(note: Note) {
+        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(note.title)
             .setMessage(note.message)
@@ -83,9 +75,9 @@ class ListOfNotesFragment : Fragment() {
             .setPositiveButton(getString(R.string.positive_button_delete)) { _, _ ->
                 viewModel.deleteNote(note)
                 viewModel.listNotes.observe(viewLifecycleOwner) {
-                    (binding.listOfNotes.adapter as NotesAdapter).setList(it)
+                    (binding.listOfNotes.adapter as NoteAdapter).setList(it)
                 }
-                viewModel.getListNotes()
+                viewModel.getListNotesByUser(sharedPreferencesRepository.getUserEmail().toString())
             }
             .setCancelable(false)
             .show()

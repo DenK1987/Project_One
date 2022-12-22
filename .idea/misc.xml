@@ -20,24 +20,38 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/animation_button.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/animation_text.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_blur_view.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_bottom_navigation.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_bottom_sheet_dialog.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_button.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_button_profile.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_field_edittext.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_note_after_current.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_note_before_current.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_note_current.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_note_equal_current.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_after_current.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_before_current.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_current.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_equal_current.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_arrow_back.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_check_box_outline_blank_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_edit_calendar_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_filter_list_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_note_add_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_view_list_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_share.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/selector.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_add_note.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_list_of_notes.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_login.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_main.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_signup.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_start.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_step2.xml" value="0.25" />
@@ -54,10 +68,16 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_login.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_main_app.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_page.xml" value="0.3" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_profile.xml" value="0.3" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_search.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_signup.xml" value="0.3" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_start_app.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/fragment_tab.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/item_note.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/item_search_note.xml" value="0.3" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/menu/menu_info.xml" value="0.30085470085470084" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/menu/menu_popup_filter_notes.xml" value="0.2970464135021097" />
       </map>
     </option>
   </component>

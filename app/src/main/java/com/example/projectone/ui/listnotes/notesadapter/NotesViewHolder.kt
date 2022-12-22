@@ -3,10 +3,10 @@ package com.example.projectone.ui.listnotes.notesadapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projectone.R
 import com.example.projectone.databinding.ItemNoteBinding
-import com.example.projectone.model.Note
-import com.example.projectone.model.NoteType
+import com.example.projectone.models.Note
+import com.example.projectone.models.NoteType
 import com.example.projectone.utils.Constant.DATE_FORMAT
-import com.example.projectone.utils.transformDateInString
+import com.example.projectone.utils.transformDateLongInString
 
 class NotesViewHolder(
     private val binding: ItemNoteBinding,
@@ -20,7 +20,7 @@ class NotesViewHolder(
             titleItem.text = note.title
             messageItem.text = note.message
             dateOfCreationItem.text =
-                transformDateInString(dateFormat = DATE_FORMAT, date = note.dateOfCreation)
+                transformDateLongInString(dateFormat = DATE_FORMAT, date = note.dateOfCreation)
             infoItem.setOnClickListener {
                 onClickInfo(note)
             }
@@ -74,9 +74,7 @@ class NotesViewHolder(
         }
         binding.messageItem.setTextColor(colorText)
         binding.dateOfCreationItem.setTextColor(colorText)
-
         binding.noteItem.setBackgroundResource(drawable)
-
         binding.infoItem.setColorFilter(colorInfo)
     }
 }

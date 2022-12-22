@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="Button">
         <item name="android:textSize">@dimen/sp_18</item>
         <item name="android:layout_width">@dimen/dp_263</item>
         <item name="android:layout_height">@dimen/dp_54</item>
-        <item name="android:textColor">@color/text_button</item>
+        <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/public_sans_medium</item>
         <item name="android:background">@drawable/bg_button</item>
         <item name="android:textAllCaps">false</item>
@@ -17,7 +16,6 @@
         <item name="android:gravity">center</item>
         <item name="android:lineSpacingExtra">@dimen/dp_5</item>
         <item name="android:stateListAnimator">@drawable/animation_text</item>
-<!--        <item name="android:background">?attr/selectableItemBackground</item>-->
         <item name="android:fontFamily">@font/public_sans</item>
     </style>
 
@@ -28,12 +26,6 @@
         <item name="android:fontFamily">@font/red_hat_display_medium</item>
     </style>
 
-    <!--    <style name="Toolbar" parent="Theme.AppCompat.Light.NoActionBar">-->
-    <!--        <item name="android:windowTranslucentStatus">true</item>-->
-    <!--        <item name="android:fontFamily">@font/red_hat_display_medium</item>-->
-    <!--        <item name="android:textSize">@dimen/sp_18</item>-->
-    <!--    </style>-->
-
     <style name="CustomToolbar" parent="@style/Widget.AppCompat.Toolbar">
         <item name="android:textSize">@dimen/sp_18</item>
         <item name="android:textColor">@color/text_input_layout</item>
@@ -41,4 +33,88 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="ButtonProfile">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:layout_width">@dimen/dp_137</item>
+        <item name="android:layout_height">@dimen/dp_27</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/public_sans_medium</item>
+        <item name="android:background">@drawable/bg_button_profile</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextNoteProfile">
+        <item name="android:textSize">@dimen/sp_39</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_black</item>
+    </style>
+
+    <style name="TextNoteDateAndDeleteAllNote">
+        <item name="android:textSize">@dimen/sp_12_8</item>
+        <item name="android:textColor">@color/text_input_layout</item>
+        <item name="android:fontFamily">@font/public_sans</item>
+    </style>
+
+    <style name="TextNoteTitle">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_bold</item>
+    </style>
+
+    <style name="TextNoteMessage">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/text_input_layout</item>
+        <item name="android:fontFamily">@font/public_sans</item>
+    </style>
+
+    <style name="TextAppBig">
+        <item name="android:textSize">@dimen/sp_96</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_medium</item>
+    </style>
+
+    <style name="ButtonFilters">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:stateListAnimator">@drawable/animation_button</item>
+        <item name="android:textColor">@color/text_input_layout</item>
+        <item name="android:fontFamily">@font/public_sans</item>
+        <item name="android:background">@color/color_button_transparent</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextUserNameProfile">
+        <item name="android:textSize">@dimen/sp_25</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_bold</item>
+    </style>
+
+    <style name="TextNoteCountProfile">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_medium</item>
+    </style>
+
+    <style name="TextLogoutProfile">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_bold</item>
+    </style>
+
+    <style name="TextExplanationDialog">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/red_hat_display_bold</item>
+    </style>
+
+    <style name="TextNoteTitleDialog">
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/public_sans</item>
+    </style>
+
+    <style name="TextNoteInfoDialog">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">@font/public_sans</item>
+    </style>
 </resources>

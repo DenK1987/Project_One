@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="top"
-    android:orientation="vertical">
-
-    <include
-        android:id="@+id/toolbarCustom"
-        layout="@layout/custom_toolbar" />
+    android:layout_height="match_parent"
+    android:background="@color/bg_notes_profile">
 
     <TextView
+        style="@style/TextNoteProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        android:fontFamily="@font/red_hat_display_medium"
+        android:layout_marginTop="@dimen/dp_70"
         android:text="@string/add_note"
-        android:textColor="@color/text"
-        android:textSize="@dimen/sp_25" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/titleNoteInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_39"
+        android:layout_marginTop="@dimen/dp_154"
         android:layout_marginEnd="@dimen/dp_16"
         android:hint="@string/title"
         android:textColorHint="@color/text_input_layout"
@@ -34,10 +30,15 @@
         app:boxCornerRadiusTopEnd="@dimen/dp_8"
         app:boxCornerRadiusTopStart="@dimen/dp_8"
         app:boxStrokeWidth="@dimen/dp_0"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:counterTextAppearance="@style/TextNoteDateAndDeleteAllNote"
+        app:counterTextColor="@color/text_input_layout"
         app:endIconDrawable="@drawable/ic_baseline_edit_calendar_24"
         app:endIconMode="custom"
         app:errorEnabled="true"
-        app:errorTextColor="@color/red">
+        app:errorTextColor="@color/red"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleNoteInputEditText"
@@ -55,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_39"
+        android:layout_marginTop="@dimen/dp_27"
         android:layout_marginEnd="@dimen/dp_16"
         android:hint="@string/message"
         android:textColorHint="@color/text_input_layout"
@@ -65,13 +66,18 @@
         app:boxCornerRadiusTopEnd="@dimen/dp_8"
         app:boxCornerRadiusTopStart="@dimen/dp_8"
         app:boxStrokeWidth="@dimen/dp_0"
+        app:counterEnabled="true"
+        app:counterMaxLength="140"
+        app:counterTextAppearance="@style/TextNoteDateAndDeleteAllNote"
+        app:counterTextColor="@color/text_input_layout"
         app:errorEnabled="true"
-        app:errorTextColor="@color/red">
+        app:errorTextColor="@color/red"
+        app:layout_constraintTop_toBottomOf="@+id/titleNoteInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/messageNoteInputEditText"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="@dimen/dp_160"
             android:fontFamily="@font/public_sans"
             android:gravity="top"
             android:inputType="textMultiLine"
@@ -83,16 +89,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddNote"
+        style="@style/Button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_54"
         android:layout_marginStart="@dimen/dp_56"
-        android:layout_marginTop="@dimen/dp_186"
         android:layout_marginEnd="@dimen/dp_56"
-        android:background="@drawable/bg_button"
-        android:fontFamily="@font/public_sans_medium"
+        android:layout_marginBottom="@dimen/dp_134"
         android:text="@string/add"
-        android:textAllCaps="false"
-        android:textColor="@color/text_button"
-        android:textSize="@dimen/sp_18" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
