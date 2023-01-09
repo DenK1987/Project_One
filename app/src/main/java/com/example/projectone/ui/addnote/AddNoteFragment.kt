@@ -10,7 +10,6 @@ import com.example.projectone.R
 import com.example.projectone.databinding.FragmentAddNoteBinding
 import com.example.projectone.models.Note
 import com.example.projectone.repositories.SharedPreferencesRepository
-import com.example.projectone.ui.listnotes.ListNotesViewModel
 import com.example.projectone.ui.listnotes.ListOfNotesFragment
 import com.example.projectone.utils.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -51,17 +50,19 @@ class AddNoteFragment : Fragment() {
         val textMessage = binding.messageNoteInputEditText.text.toString()
         val userEmail = sharedPreferencesRepository.getUserEmail().toString()
 
-        binding.titleNoteInputEditText.isValid(
-            binding.titleNoteInputLayout,
-            getString(R.string.text_error_on_emptiness)
-        )
-        binding.messageNoteInputEditText.isValid(
-            binding.messageNoteInputLayout,
-            getString(R.string.text_error_on_emptiness)
-        )
+        binding.run {
+            titleNoteInputEditText.isValid(
+                titleNoteInputLayout,
+                getString(R.string.text_error_on_emptiness)
+            )
+            messageNoteInputEditText.isValid(
+                binding.messageNoteInputLayout,
+                getString(R.string.text_error_on_emptiness)
+            )
 
-        binding.titleNoteInputEditText.validateForMaxLengthOf50Characters(binding.titleNoteInputLayout)
-        binding.messageNoteInputEditText.validateForMaxLengthOf140Characters(binding.messageNoteInputLayout)
+            titleNoteInputEditText.validateForMaxLengthOf50Characters(titleNoteInputLayout)
+            messageNoteInputEditText.validateForMaxLengthOf140Characters(messageNoteInputLayout)
+        }
 
         if (textTitle.isNotBlank()
             && textTitle.length <= Constant.MAX_LENGTH_TITLE
@@ -100,17 +101,19 @@ class AddNoteFragment : Fragment() {
         val textMessage = binding.messageNoteInputEditText.text.toString()
         val userEmail = sharedPreferencesRepository.getUserEmail().toString()
 
-        binding.titleNoteInputEditText.isValid(
-            binding.titleNoteInputLayout,
-            getString(R.string.text_error_on_emptiness)
-        )
-        binding.messageNoteInputEditText.isValid(
-            binding.messageNoteInputLayout,
-            getString(R.string.text_error_on_emptiness)
-        )
+        binding.run {
+            titleNoteInputEditText.isValid(
+                titleNoteInputLayout,
+                getString(R.string.text_error_on_emptiness)
+            )
+            messageNoteInputEditText.isValid(
+                binding.messageNoteInputLayout,
+                getString(R.string.text_error_on_emptiness)
+            )
 
-        binding.titleNoteInputEditText.validateForMaxLengthOf50Characters(binding.titleNoteInputLayout)
-        binding.messageNoteInputEditText.validateForMaxLengthOf140Characters(binding.messageNoteInputLayout)
+            titleNoteInputEditText.validateForMaxLengthOf50Characters(titleNoteInputLayout)
+            messageNoteInputEditText.validateForMaxLengthOf140Characters(messageNoteInputLayout)
+        }
 
         if (textTitle.isNotBlank()
             && textTitle.length <= Constant.MAX_LENGTH_TITLE

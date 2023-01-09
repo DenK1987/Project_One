@@ -3,8 +3,10 @@ package com.example.projectone.ui.searchnotes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.projectone.models.Note
 import com.example.projectone.repositories.NotesRepository
+import kotlinx.coroutines.launch
 
 class SearchViewModel : ViewModel() {
 
@@ -16,22 +18,24 @@ class SearchViewModel : ViewModel() {
     val listNotes: LiveData<List<Note>> = _listNotes
 
     fun getListNotes(userEmail: String) {
-//        val list = repository.getListNotes()
+        viewModelScope.launch {
+            val list = repository.getAllNotesByUser(userEmail)
 
-        val list = repository.getAllNotesByUser(userEmail)
-
-        searchResult = ArrayList(list)
-        _listNotes.value = searchResult
+            searchResult = ArrayList(list)
+            _listNotes.value = searchResult
+        }
     }
 
     fun searchNotes(searchText: String, userEmail: String) {
-        searchResult = repository.getAllNotesByUser(userEmail).filter { note ->
-            note.title.contains(searchText, ignoreCase = true) || note.message.contains(
-                searchText,
-                ignoreCase = true
-            )
-        } as ArrayList<Note>
-        _listNotes.value = searchResult
+        viewModelScope.launch {
+            searchResult = repository.getAllNotesByUser(userEmail).filter { note ->
+                note.title.contains(searchText, ignoreCase = true) || note.message.contains(
+                    searchText,
+                    ignoreCase = true
+                )
+            } as ArrayList<Note>
+            _listNotes.value = searchResult
+        }
     }
 
     fun getListNotesSortedByTitle() {

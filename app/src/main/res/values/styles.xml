@@ -15,7 +15,7 @@
         <item name="android:textColor">@color/text</item>
         <item name="android:gravity">center</item>
         <item name="android:lineSpacingExtra">@dimen/dp_5</item>
-        <item name="android:stateListAnimator">@drawable/animation_text</item>
+        <item name="android:stateListAnimator">@animator/animation_text</item>
         <item name="android:fontFamily">@font/public_sans</item>
     </style>
 
@@ -75,7 +75,7 @@
 
     <style name="ButtonFilters">
         <item name="android:textSize">@dimen/sp_16</item>
-        <item name="android:stateListAnimator">@drawable/animation_button</item>
+        <item name="android:stateListAnimator">@animator/animation_button</item>
         <item name="android:textColor">@color/text_input_layout</item>
         <item name="android:fontFamily">@font/public_sans</item>
         <item name="android:background">@color/color_button_transparent</item>

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.example.projectone.R
 import com.example.projectone.databinding.FragmentPageBinding
 import com.example.projectone.ui.auth.SignupFragment
 import com.example.projectone.utils.navigationFragments

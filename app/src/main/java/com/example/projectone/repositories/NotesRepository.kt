@@ -5,23 +5,23 @@ import com.example.projectone.models.Note
 
 class NotesRepository {
 
-    fun addNote(note: Note) {
+    suspend fun addNote(note: Note) {
         DataBase.db.noteDao().addNote(note)
     }
 
-    fun deleteNote(note: Note) {
+    suspend fun deleteNote(note: Note) {
         DataBase.db.noteDao().deleteNote(note)
     }
 
-    fun getAllNotesByUser(email: String): List<Note> {
+    suspend fun getAllNotesByUser(email: String): List<Note> {
         return DataBase.db.noteDao().getAllNotesByUser(email)
     }
 
-    fun getNotesCountByUser(email: String): Int {
+    suspend fun getNotesCountByUser(email: String): Int {
         return DataBase.db.noteDao().getAllNotesByUser(email).size
     }
 
-    fun deleteAllNotesByUser(email: String) {
+    suspend fun deleteAllNotesByUser(email: String) {
         DataBase.db.noteDao().deleteAllNotesByUser(email)
     }
 }

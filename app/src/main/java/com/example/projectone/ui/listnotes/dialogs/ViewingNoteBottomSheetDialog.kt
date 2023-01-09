@@ -12,7 +12,6 @@ import com.example.projectone.utils.Constant.DATE_FORMAT
 import com.example.projectone.utils.shareNote
 import com.example.projectone.utils.transformDateLongInString
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.util.*
 
 class ViewingNoteBottomSheetDialog : BottomSheetDialogFragment() {
 

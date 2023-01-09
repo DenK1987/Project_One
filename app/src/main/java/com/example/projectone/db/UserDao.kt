@@ -9,19 +9,11 @@ import com.example.projectone.models.User
 interface UserDao {
 
     @Insert
-    fun addUser(user: User)
+    suspend fun addUser(user: User)
 
     @Query("SELECT * FROM User WHERE email=(:email)")
-    fun getUser(email: String): User?
+    suspend fun getUser(email: String): User?
 
     @Query("DELETE FROM User WHERE email = (:email)")
-    fun deleteUser(email: String)
-
-
-
-    @Query("DELETE FROM User")
-    fun deleteAllUsers()
-
-    @Query("SELECT * FROM User")
-    fun getAllUsers(): List<User>
+    suspend fun deleteUser(email: String)
 }

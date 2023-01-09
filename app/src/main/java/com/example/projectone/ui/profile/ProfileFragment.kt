@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentProfileBinding
 import com.example.projectone.repositories.SharedPreferencesRepository
@@ -15,6 +15,8 @@ import com.example.projectone.repositories.UserStatus
 import com.example.projectone.ui.auth.LoginFragment
 import com.example.projectone.ui.auth.SignupFragment
 import com.example.projectone.utils.navigationFragments
+import com.example.projectone.utils.toast
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
 
@@ -39,18 +41,22 @@ class ProfileFragment : Fragment() {
         val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
         userEmail = sharedPreferencesRepository.getUserEmail()
 
-        binding.userName.text = sharedPreferencesRepository.getUserFullName()
+        binding.run {
+            userName.text = sharedPreferencesRepository.getUserFullName()
 
-        binding.notesCount.text = getNotesCount()
+            lifecycleScope.launch {
+                notesCount.text = getNotesCount()
+            }
 
-        binding.deleteAllNotes.setOnClickListener { deleteAllNotes() }
+            deleteAllNotes.setOnClickListener { lifecycleScope.launch { deleteAllNotes() } }
 
-        binding.logout.setOnClickListener { logOut() }
+            logout.setOnClickListener { logOut() }
 
-        binding.buttonDeleteProfile.setOnClickListener { deleteProfile() }
+            buttonDeleteProfile.setOnClickListener { deleteProfile() }
+        }
     }
 
-    private fun getNotesCount(): String {
+    private suspend fun getNotesCount(): String {
         return if (viewModel.getNotesCount(userEmail.toString()) == 1) {
             "${viewModel.getNotesCount(userEmail.toString())} ${getString(R.string.one_note)}"
         } else {
@@ -73,7 +79,7 @@ class ProfileFragment : Fragment() {
             .show()
     }
 
-    private fun deleteAllNotes() {
+    private suspend fun deleteAllNotes() {
         if (viewModel.getNotesCount(userEmail.toString()) > 0) {
             AlertDialog.Builder(requireContext())
                 .setMessage(getString(R.string.delete_all_notes_dialog))
@@ -94,17 +100,15 @@ class ProfileFragment : Fragment() {
             .setMessage(getString(R.string.delete_profile_dialog))
             .setNegativeButton(getString(R.string.negative_button_cancel)) { _, _ -> }
             .setPositiveButton(getString(R.string.positive_button_delete)) { _, _ ->
-                sharedPreferencesRepository.setUserStatus(UserStatus.USER_DELETE)
-                sharedPreferencesRepository.deleteUserProfile()
+                sharedPreferencesRepository.run {
+                    setUserStatus(UserStatus.USER_DELETE)
+                    deleteUserProfile()
+                }
 
                 viewModel.deleteAllNotes(userEmail.toString())
                 viewModel.deleteUser(userEmail.toString())
 
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.profile_deleted),
-                    Toast.LENGTH_LONG
-                ).show()
+                toast(getString(R.string.profile_deleted))
 
                 navigationFragments(parentFragmentManager, SignupFragment())
             }

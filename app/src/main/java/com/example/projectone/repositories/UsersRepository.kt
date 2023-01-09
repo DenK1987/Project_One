@@ -5,15 +5,15 @@ import com.example.projectone.models.User
 
 class UsersRepository {
 
-    fun addUser(user: User) {
+    suspend fun addUser(user: User) {
         DataBase.db.userDao().addUser(user)
     }
 
-    fun deleteUser(email: String) {
+    suspend fun deleteUser(email: String) {
         DataBase.db.userDao().deleteUser(email)
     }
 
-    fun getUser(email: String): User? {
+    suspend fun getUser(email: String): User? {
         return DataBase.db.userDao().getUser(email)
     }
 }
