@@ -1,8 +1,11 @@
 package com.example.projectone.ui.profile
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.projectone.repositories.NotesRepository
 import com.example.projectone.repositories.UsersRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ProfileViewModel : ViewModel() {
 
@@ -11,14 +14,18 @@ class ProfileViewModel : ViewModel() {
     private val usersRepository = UsersRepository()
 
     fun deleteAllNotes(email: String) {
-        notesRepository.deleteAllNotesByUser(email)
+        viewModelScope.launch(Dispatchers.IO) {
+            notesRepository.deleteAllNotesByUser(email)
+        }
     }
 
-    fun getNotesCount(email: String): Int {
+    suspend fun getNotesCount(email: String): Int {
         return notesRepository.getNotesCountByUser(email)
     }
 
     fun deleteUser(email: String) {
-        usersRepository.deleteUser(email)
+        viewModelScope.launch(Dispatchers.IO) {
+            usersRepository.deleteUser(email)
+        }
     }
 }

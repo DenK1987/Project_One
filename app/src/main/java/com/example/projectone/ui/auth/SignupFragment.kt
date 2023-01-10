@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentSignupBinding
 import com.example.projectone.models.User
@@ -15,6 +15,7 @@ import com.example.projectone.repositories.UserStatus
 import com.example.projectone.ui.listnotes.ListOfNotesFragment
 import com.example.projectone.utils.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.launch
 
 class SignupFragment : Fragment() {
 
@@ -39,31 +40,35 @@ class SignupFragment : Fragment() {
         bottomNavigation = requireActivity().findViewById(R.id.bottomNavigation)
         bottomNavigation?.visibility = View.GONE
 
-        binding.textLogin.setOnClickListener {
-            navigationFragments(parentFragmentManager, LoginFragment())
-        }
+        binding.run {
+            textLogin.setOnClickListener {
+                navigationFragments(parentFragmentManager, LoginFragment())
+            }
 
-        binding.firstNameInputEditText.addTextWatcher(binding.firstNameInputLayout)
-        binding.lastNameInputEditText.addTextWatcher(binding.lastNameInputLayout)
-        binding.emailSignupInputEditText.addTextWatcher(binding.emailSignupInputLayout)
-        binding.passwordSignupInputEditText.addTextWatcher(binding.passwordSignupInputLayout)
+            firstNameInputEditText.addTextWatcher(firstNameInputLayout)
+            lastNameInputEditText.addTextWatcher(lastNameInputLayout)
+            emailSignupInputEditText.addTextWatcher(emailSignupInputLayout)
+            passwordSignupInputEditText.addTextWatcher(passwordSignupInputLayout)
 
-        binding.buttonSignup.setOnClickListener {
-            signUp()
+            buttonSignup.setOnClickListener {
+                lifecycleScope.launch { signUp() }
+            }
         }
     }
 
-    private fun signUp() {
+    private suspend fun signUp() {
         val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
         val firstName = binding.firstNameInputEditText.text.toString()
         val lastName = binding.lastNameInputEditText.text.toString()
         val email = binding.emailSignupInputEditText.text.toString()
         val password = binding.passwordSignupInputEditText.text.toString()
 
-        binding.firstNameInputEditText.validName(binding.firstNameInputLayout)
-        binding.lastNameInputEditText.validName(binding.lastNameInputLayout)
-        binding.emailSignupInputEditText.validEmail(binding.emailSignupInputLayout)
-        binding.passwordSignupInputEditText.validPassword(binding.passwordSignupInputLayout)
+        binding.run {
+            firstNameInputEditText.validName(firstNameInputLayout)
+            lastNameInputEditText.validName(lastNameInputLayout)
+            emailSignupInputEditText.validEmail(emailSignupInputLayout)
+            passwordSignupInputEditText.validPassword(passwordSignupInputLayout)
+        }
 
         if (binding.firstNameInputEditText.isValidName()
             && binding.lastNameInputEditText.isValidName()
@@ -81,24 +86,18 @@ class SignupFragment : Fragment() {
                 )
                 viewModel.addUser(newUser)
 
-                sharedPreferencesRepository.setUserStatus(UserStatus.USER_SIGNUP)
-                sharedPreferencesRepository.setUserEmail(email)
-                sharedPreferencesRepository.setUserPassword(password)
-                sharedPreferencesRepository.setUserFullName(firstName, lastName)
+                sharedPreferencesRepository.run {
+                    setUserStatus(UserStatus.USER_SIGNUP)
+                    setUserEmail(email)
+                    setUserPassword(password)
+                    setUserFullName(firstName, lastName)
+                }
 
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.registration_is_successful),
-                    Toast.LENGTH_LONG
-                ).show()
+                toast(getString(R.string.registration_is_successful))
 
                 navigationFragments(parentFragmentManager, ListOfNotesFragment())
             } else {
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.user_with_this_email_is_already_registered),
-                    Toast.LENGTH_LONG
-                ).show()
+                toast(getString(R.string.user_with_this_email_is_already_registered))
             }
         }
     }

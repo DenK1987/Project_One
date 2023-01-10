@@ -13,7 +13,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 object Constant {
-    const val TIME_DELAY = 5000L
     const val DATE_FORMAT = "dd/MM/yyyy"
     const val MAX_LENGTH_NAME = 255
     const val MIN_LENGTH_NAME = 3

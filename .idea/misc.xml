@@ -18,6 +18,8 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Project_One/app/src/main/res/layout/activity_step5.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Project_One/app/src/main/res/layout/activity_step6.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/animation_button.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/animation_icon.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/animation_item_note.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/animation_text.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_blur_view.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_bottom_navigation.xml" value="0.226" />
@@ -33,6 +35,11 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_before_current.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_current.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/bg_item_search_note_equal_current.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/diaporama_step2.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/diaporama_step3.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/diaporama_step4.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/diaporama_step5.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/diaporama_step6.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_arrow_back.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_check_box_outline_blank_24.xml" value="0.226" />
@@ -46,8 +53,10 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_note_add_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_baseline_view_list_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_launcher_background.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/ic_share.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/drawable/selector.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/font/public_sans_bold.xml" value="0.32151898734177214" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_add_note.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_list_of_notes.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Spiice/app/src/main/res/layout/activity_login.xml" value="0.30085470085470084" />

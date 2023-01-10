@@ -11,6 +11,6 @@ object DataBase {
         db = Room.databaseBuilder(
             context,
             AppDataBase::class.java, "database-name"
-        ).allowMainThreadQueries().build()
+        ).build()
     }
 }

@@ -10,22 +10,14 @@ import com.example.projectone.models.Note
 interface NoteDao {
 
     @Insert
-    fun addNote(note: Note)
+    suspend fun addNote(note: Note)
 
     @Delete
-    fun deleteNote(note: Note)
+    suspend fun deleteNote(note: Note)
 
     @Query("SELECT * FROM Note WHERE userEmail LIKE :email")
-    fun getAllNotesByUser(email: String): List<Note>
+    suspend fun getAllNotesByUser(email: String): List<Note>
 
     @Query("DELETE FROM Note WHERE userEmail LIKE :email")
-    fun deleteAllNotesByUser(email: String)
-
-
-
-    @Query("DELETE FROM Note")
-    fun deleteAllNotes()
-
-    @Query("SELECT * FROM Note")
-    fun getAllNotes(): List<Note>
+    suspend fun deleteAllNotesByUser(email: String)
 }
