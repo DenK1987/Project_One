@@ -9,13 +9,14 @@ import androidx.fragment.app.viewModels
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentAddNoteBinding
 import com.example.projectone.models.Note
-import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.ui.listnotes.ListOfNotesFragment
 import com.example.projectone.utils.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class AddNoteFragment : Fragment() {
 
     private lateinit var binding: FragmentAddNoteBinding
@@ -45,10 +46,9 @@ class AddNoteFragment : Fragment() {
     }
 
     private fun showDatePicker() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
         val textTitle = binding.titleNoteInputEditText.text.toString()
         val textMessage = binding.messageNoteInputEditText.text.toString()
-        val userEmail = sharedPreferencesRepository.getUserEmail().toString()
+        val userEmail = viewModel.getUserEmail().toString()
 
         binding.run {
             titleNoteInputEditText.isValid(
@@ -96,10 +96,9 @@ class AddNoteFragment : Fragment() {
     }
 
     private fun addNoteAndNavigate() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
         val textTitle = binding.titleNoteInputEditText.text.toString()
         val textMessage = binding.messageNoteInputEditText.text.toString()
-        val userEmail = sharedPreferencesRepository.getUserEmail().toString()
+        val userEmail = viewModel.getUserEmail().toString()
 
         binding.run {
             titleNoteInputEditText.isValid(

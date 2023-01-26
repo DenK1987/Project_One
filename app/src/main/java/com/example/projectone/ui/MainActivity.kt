@@ -15,10 +15,16 @@ import com.example.projectone.ui.onboarding.StartAppFragment
 import com.example.projectone.ui.profile.ProfileFragment
 import com.example.projectone.ui.searchnotes.SearchFragment
 import com.example.projectone.utils.navigationFragments
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +37,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun selectAndGoToStartScreen() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(this)
-
         when (sharedPreferencesRepository.getUserStatus()) {
             UserStatus.USER_SIGNUP.name ->
                 navigationFragments(supportFragmentManager, ListOfNotesFragment())

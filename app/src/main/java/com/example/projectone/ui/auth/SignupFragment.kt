@@ -10,13 +10,14 @@ import androidx.lifecycle.lifecycleScope
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentSignupBinding
 import com.example.projectone.models.User
-import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.repositories.UserStatus
 import com.example.projectone.ui.listnotes.ListOfNotesFragment
 import com.example.projectone.utils.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SignupFragment : Fragment() {
 
     private lateinit var binding: FragmentSignupBinding
@@ -57,7 +58,6 @@ class SignupFragment : Fragment() {
     }
 
     private suspend fun signUp() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
         val firstName = binding.firstNameInputEditText.text.toString()
         val lastName = binding.lastNameInputEditText.text.toString()
         val email = binding.emailSignupInputEditText.text.toString()
@@ -84,9 +84,10 @@ class SignupFragment : Fragment() {
                     email = email,
                     password = password
                 )
-                viewModel.addUser(newUser)
 
-                sharedPreferencesRepository.run {
+                viewModel.run {
+                    addUser(newUser)
+
                     setUserStatus(UserStatus.USER_SIGNUP)
                     setUserEmail(email)
                     setUserPassword(password)

@@ -1,19 +1,22 @@
 package com.example.projectone.repositories
 
-import com.example.projectone.db.DataBase
+import com.example.projectone.db.UserDao
 import com.example.projectone.models.User
+import javax.inject.Inject
 
-class UsersRepository {
+class UsersRepository @Inject constructor(
+    private val userDao: UserDao
+) {
 
     suspend fun addUser(user: User) {
-        DataBase.db.userDao().addUser(user)
+        userDao.addUser(user)
     }
 
     suspend fun deleteUser(email: String) {
-        DataBase.db.userDao().deleteUser(email)
+        userDao.deleteUser(email)
     }
 
     suspend fun getUser(email: String): User? {
-        return DataBase.db.userDao().getUser(email)
+        return userDao.getUser(email)
     }
 }

@@ -6,11 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projectone.models.Note
 import com.example.projectone.repositories.NotesRepository
+import com.example.projectone.repositories.SharedPreferencesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SearchViewModel : ViewModel() {
-
-    private val repository = NotesRepository()
+@HiltViewModel
+class SearchViewModel @Inject constructor(
+    private val repository: NotesRepository,
+    private val sharedPreferencesRepository: SharedPreferencesRepository
+) : ViewModel() {
 
     private var searchResult = arrayListOf<Note>()
 
@@ -18,25 +24,27 @@ class SearchViewModel : ViewModel() {
     val listNotes: LiveData<List<Note>> = _listNotes
 
     fun getListNotes(userEmail: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val list = repository.getAllNotesByUser(userEmail)
 
             searchResult = ArrayList(list)
-            _listNotes.value = searchResult
+            _listNotes.postValue(searchResult)
         }
     }
 
     fun searchNotes(searchText: String, userEmail: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             searchResult = repository.getAllNotesByUser(userEmail).filter { note ->
                 note.title.contains(searchText, ignoreCase = true) || note.message.contains(
                     searchText,
                     ignoreCase = true
                 )
             } as ArrayList<Note>
-            _listNotes.value = searchResult
+            _listNotes.postValue(searchResult)
         }
     }
+
+    fun getUserEmail() = sharedPreferencesRepository.getUserEmail()
 
     fun getListNotesSortedByTitle() {
         _listNotes.value = searchResult.sortedBy { note -> note.title }
