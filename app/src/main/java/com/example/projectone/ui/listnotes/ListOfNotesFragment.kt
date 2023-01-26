@@ -10,13 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentListOfNotesBinding
 import com.example.projectone.models.Note
-import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.ui.listnotes.dialogs.NotePlanningInfoDialog
 import com.example.projectone.ui.listnotes.dialogs.ViewingNoteBottomSheetDialog
 import com.example.projectone.ui.listnotes.notesadapter.NoteAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ListOfNotesFragment : Fragment() {
 
     private lateinit var binding: FragmentListOfNotesBinding
@@ -37,8 +38,6 @@ class ListOfNotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
-
         bottomNavigation = requireActivity().findViewById(R.id.bottomNavigation)
         bottomNavigation?.visibility = View.VISIBLE
 
@@ -54,7 +53,7 @@ class ListOfNotesFragment : Fragment() {
             (binding.listOfNotes.adapter as NoteAdapter).setList(it)
         }
 
-        viewModel.getListNotesByUser(sharedPreferencesRepository.getUserEmail().toString())
+        viewModel.getListNotesByUser(viewModel.getUserEmail().toString())
     }
 
     private fun onClickNote(note: Note) {
@@ -66,8 +65,6 @@ class ListOfNotesFragment : Fragment() {
     }
 
     private fun deleteNote(note: Note) {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
-
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(note.title)
             .setMessage(note.message)
@@ -77,7 +74,7 @@ class ListOfNotesFragment : Fragment() {
                 viewModel.listNotes.observe(viewLifecycleOwner) {
                     (binding.listOfNotes.adapter as NoteAdapter).setList(it)
                 }
-                viewModel.getListNotesByUser(sharedPreferencesRepository.getUserEmail().toString())
+                viewModel.getListNotesByUser(viewModel.getUserEmail().toString())
             }
             .setCancelable(false)
             .show()

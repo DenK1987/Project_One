@@ -2,6 +2,9 @@ package com.example.projectone.repositories
 
 import android.content.Context
 import androidx.core.content.edit
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
 private const val USER_PREFERENCES = "user_preferences"
 private const val GLOBAL_PREFERENCES = "global_preferences"
@@ -11,7 +14,8 @@ private const val USER_STATUS = "user_status"
 private const val USER_FIRST_NAME = "user_first_name"
 private const val USER_LAST_NAME = "user_last_name"
 
-class SharedPreferencesRepository(context: Context) {
+@Singleton
+class SharedPreferencesRepository @Inject constructor(@ApplicationContext context: Context) {
 
     private val userPreferences =
         context.getSharedPreferences(USER_PREFERENCES, Context.MODE_PRIVATE)

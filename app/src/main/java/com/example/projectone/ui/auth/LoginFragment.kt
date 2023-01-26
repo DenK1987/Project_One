@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentLoginBinding
-import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.repositories.UserStatus
 import com.example.projectone.ui.listnotes.ListOfNotesFragment
 import com.example.projectone.utils.addTextWatcher
@@ -17,8 +16,10 @@ import com.example.projectone.utils.isValid
 import com.example.projectone.utils.navigationFragments
 import com.example.projectone.utils.toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
@@ -58,7 +59,6 @@ class LoginFragment : Fragment() {
     }
 
     private suspend fun logIn() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
         val email = binding.emailLoginInputEditText.text.toString()
         val password = binding.passwordLoginInputEditText.text.toString()
 
@@ -84,7 +84,7 @@ class LoginFragment : Fragment() {
                 } else {
                     toast(getString(R.string.message_valid))
 
-                    sharedPreferencesRepository.run {
+                    viewModel.run {
                         setUserStatus(UserStatus.USER_SIGNUP)
                         setUserEmail(email)
                     }

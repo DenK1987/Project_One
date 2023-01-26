@@ -18,7 +18,13 @@ class NotesViewHolder(
     fun bind(note: Note) {
         binding.apply {
             titleItem.text = note.title
+            titleItem.setOnClickListener {
+                titleItem.maxLines = Int.MAX_VALUE
+            }
             messageItem.text = note.message
+            messageItem.setOnClickListener {
+                messageItem.maxLines = Int.MAX_VALUE
+            }
             dateOfCreationItem.text =
                 transformDateLongInString(dateFormat = DATE_FORMAT, date = note.dateOfCreation)
             infoItem.setOnClickListener {

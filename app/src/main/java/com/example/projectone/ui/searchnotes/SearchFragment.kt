@@ -12,9 +12,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentSearchBinding
-import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.ui.searchnotes.searchnoteadapter.SearchNoteAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SearchFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
 
     private lateinit var binding: FragmentSearchBinding
@@ -33,8 +34,6 @@ class SearchFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
-
         viewModel.listNotes.observe(viewLifecycleOwner) {
             (binding.listNotes.adapter as SearchNoteAdapter).setList(it)
         }
@@ -42,7 +41,7 @@ class SearchFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
         binding.searchNoteInputEditText.doAfterTextChanged {
             viewModel.searchNotes(
                 it.toString(),
-                sharedPreferencesRepository.getUserEmail().toString()
+                viewModel.getUserEmail().toString()
             )
         }
 
@@ -51,7 +50,7 @@ class SearchFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
             adapter = SearchNoteAdapter()
         }
 
-        viewModel.getListNotes(sharedPreferencesRepository.getUserEmail().toString())
+        viewModel.getListNotes(viewModel.getUserEmail().toString())
 
         binding.buttonFilterNotes.setOnClickListener {
             PopupMenu(requireContext(), it).apply {

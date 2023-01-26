@@ -10,14 +10,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.projectone.R
 import com.example.projectone.databinding.FragmentProfileBinding
-import com.example.projectone.repositories.SharedPreferencesRepository
 import com.example.projectone.repositories.UserStatus
 import com.example.projectone.ui.auth.LoginFragment
 import com.example.projectone.ui.auth.SignupFragment
 import com.example.projectone.utils.navigationFragments
 import com.example.projectone.utils.toast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
@@ -38,14 +39,14 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
-        userEmail = sharedPreferencesRepository.getUserEmail()
+        userEmail = viewModel.getUserEmail()
 
         binding.run {
-            userName.text = sharedPreferencesRepository.getUserFullName()
+            userName.text = viewModel.getUserFullName()
 
             lifecycleScope.launch {
-                notesCount.text = getNotesCount()
+                val count = viewModel.getNotesCount(userEmail.toString())
+                notesCount.text = resources.getQuantityString(R.plurals.plurals_note, count, count)
             }
 
             deleteAllNotes.setOnClickListener { lifecycleScope.launch { deleteAllNotes() } }
@@ -56,22 +57,12 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private suspend fun getNotesCount(): String {
-        return if (viewModel.getNotesCount(userEmail.toString()) == 1) {
-            "${viewModel.getNotesCount(userEmail.toString())} ${getString(R.string.one_note)}"
-        } else {
-            "${viewModel.getNotesCount(userEmail.toString())} ${getString(R.string.not_one_note)}"
-        }
-    }
-
     private fun logOut() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
-
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.logout_of_profile_dialog))
             .setNegativeButton(getString(R.string.negative_button_cancel)) { _, _ -> }
             .setPositiveButton(getString(R.string.positive_button_exit)) { _, _ ->
-                sharedPreferencesRepository.setUserStatus(UserStatus.USER_LOGOUT)
+                viewModel.setUserStatus(UserStatus.USER_LOGOUT)
 
                 navigationFragments(parentFragmentManager, LoginFragment())
             }
@@ -94,20 +85,16 @@ class ProfileFragment : Fragment() {
     }
 
     private fun deleteProfile() {
-        val sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
-
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.delete_profile_dialog))
             .setNegativeButton(getString(R.string.negative_button_cancel)) { _, _ -> }
             .setPositiveButton(getString(R.string.positive_button_delete)) { _, _ ->
-                sharedPreferencesRepository.run {
+                viewModel.run {
                     setUserStatus(UserStatus.USER_DELETE)
                     deleteUserProfile()
+                    deleteAllNotes(userEmail.toString())
+                    deleteUser(userEmail.toString())
                 }
-
-                viewModel.deleteAllNotes(userEmail.toString())
-                viewModel.deleteUser(userEmail.toString())
-
                 toast(getString(R.string.profile_deleted))
 
                 navigationFragments(parentFragmentManager, SignupFragment())

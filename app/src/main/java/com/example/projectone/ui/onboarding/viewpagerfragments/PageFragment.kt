@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import com.example.projectone.databinding.FragmentPageBinding
 import com.example.projectone.ui.auth.SignupFragment
 import com.example.projectone.utils.navigationFragments
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val BACKGROUND_EXTRA = "background_extra"
 private const val IMAGE_EXTRA = "image_extra"
 private const val TEXT_EXTRA = "text_extra"
 
+@AndroidEntryPoint
 class PageFragment : Fragment() {
 
     private lateinit var binding: FragmentPageBinding

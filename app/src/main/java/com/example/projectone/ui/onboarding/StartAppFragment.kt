@@ -9,7 +9,9 @@ import com.example.projectone.databinding.FragmentStartAppBinding
 import com.example.projectone.ui.auth.LoginFragment
 import com.example.projectone.ui.onboarding.viewpagerfragments.ViewPageFragment
 import com.example.projectone.utils.navigationFragments
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class StartAppFragment : Fragment() {
 
     private lateinit var binding: FragmentStartAppBinding

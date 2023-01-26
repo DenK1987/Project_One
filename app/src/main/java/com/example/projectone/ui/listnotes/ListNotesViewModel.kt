@@ -6,12 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projectone.models.Note
 import com.example.projectone.repositories.NotesRepository
+import com.example.projectone.repositories.SharedPreferencesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ListNotesViewModel : ViewModel() {
-
-    private val repository = NotesRepository()
+@HiltViewModel
+class ListNotesViewModel @Inject constructor(
+    private val repository: NotesRepository,
+    private val sharedPreferencesRepository: SharedPreferencesRepository
+) : ViewModel() {
 
     private val _listNotes = MutableLiveData<List<Note>>()
     val listNotes: LiveData<List<Note>> = _listNotes
@@ -23,8 +28,12 @@ class ListNotesViewModel : ViewModel() {
     }
 
     fun getListNotesByUser(email: String) {
-        viewModelScope.launch {
-            _listNotes.value = repository.getAllNotesByUser(email).sortedByDescending { note -> note.dateOfCreation }
+        viewModelScope.launch(Dispatchers.IO) {
+            _listNotes.postValue(
+                repository.getAllNotesByUser(email)
+                    .sortedByDescending { note -> note.dateOfCreation })
         }
     }
+
+    fun getUserEmail() = sharedPreferencesRepository.getUserEmail()
 }
